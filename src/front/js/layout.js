@@ -6,11 +6,12 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { Register } from "./pages/register";
+import { Formulario } from "./component/formulario";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import { Formulario} from "./component/formulario";
+// import { Formulario } from "./component/formulario";
 
 //create your first component
 const Layout = () => {
