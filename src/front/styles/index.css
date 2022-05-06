@@ -1,3 +1,20 @@
-/* 
-    General Styles used on every website (Don't Repeat Yourself)
-*/
+.up-navbar {
+color:aliceblue;
+background-color:rgb(36, 33, 83);
+font-size:xx-large;
+}
+
+.login {
+float:right;
+font-size:x-large;
+}
+
+.buscar{
+display:inline-block;
+align-items:flex-end;
+}
+
+.recomendadas {
+display:inline-block;
+float:right;
+}
