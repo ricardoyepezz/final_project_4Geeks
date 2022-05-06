@@ -62,65 +62,57 @@ export const Navbar = () => {
           </ul>
         </div>
       </div>
+      {/* second Navbar */}
       <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-        <a className="navbar-brand text-white" href="#">
-          Inicio
-        </a>
-        <button
-          className="navbar-toggler text-white"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <a className="nav-link text-white" href="#">
-                Animación
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link text-white" href="#">
-                Comedia
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link text-white" href="#">
-                Drama
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link text-white" href="#">
-                Romance
-              </a>
-            </li>
-            <li className="nav-item text-white">
-              <a className="nav-link text-white" href="#">
-                Terror
-              </a>
-            </li>
-            <div className="buscar">
-              <form class="d-flex">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button class="btn btn-outline-success" type="submit">
-                  🔎
-                </button>
-              </form>
-            </div>
-          </ul>
+        <div className="container-fluid">
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <a className="nav-link text-light" aria-current="page" href="#">
+                  Inicio
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link text-light" href="#">
+                  Animación
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link text-light" href="#">
+                  Comedia
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link text-light" href="#">
+                  Drama
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link text-light" href="#">
+                  Romance
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link text-light" href="#">
+                  Terror
+                </a>
+              </li>
+            </ul>
+            <form className="d-flex">
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button className="btn btn-outline-success" type="submit">
+                🔎
+              </button>
+            </form>
+          </div>
         </div>
       </nav>
+      ;
     </>
   );
 };

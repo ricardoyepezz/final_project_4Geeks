@@ -1,15 +1,15 @@
 .up-navbar {
-color:aliceblue;
-background-color:rgb(36, 33, 83);
-font-size:xx-large;
+  color: aliceblue;
+  background-color: rgb(36, 33, 83);
+  font-size: xx-large;
 }
 
 .login {
-float:right;
-font-size:x-large;
+  float: right;
+  font-size: x-large;
 }
 
-.buscar{
+/* .buscar{
 display:inline-block;
 align-items:flex-end;
 }
@@ -17,4 +17,4 @@ align-items:flex-end;
 .recomendadas {
 display:inline-block;
 float:right;
-}
+} */
