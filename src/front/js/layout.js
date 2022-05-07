@@ -6,6 +6,7 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
+import {Animacion} from "./pages/animacion"
 
 //create your first component
 const Layout = () => {
@@ -24,6 +25,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/demo">
               <Demo />
+              </Route>
+            <Route exact path="/animacion">
+              <Animacion />
             </Route>
             <Route exact path="/single/:theid">
               <Single />

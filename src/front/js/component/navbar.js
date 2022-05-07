@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Login } from "./login";
+import {Animacion} from "../pages/animacion";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
