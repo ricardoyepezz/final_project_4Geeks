@@ -4,6 +4,10 @@ import { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Login } from "./login";
 import { Animacion } from "../pages/animacion";
+import {Comedia} from "../pages/comedia";
+import {Drama} from "../pages/drama";
+import {Romance} from "../pages/romance";
+import {Terror} from "../pages/terror";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
@@ -80,32 +84,35 @@ export const Navbar = () => {
                   Inicio
                 </a>
               </li>
-              <Animacion to="/animacion">
               <li className="nav-item">
-                <a className="nav-link text-light" href="#">
-                  Animación
+                <a className="nav-link text-light" href="/animacion">
+                <Animacion>
+                </Animacion>
                 </a>
               </li>
-              </Animacion>
 
               <li className="nav-item">
-                <a className="nav-link text-light" href="#">
-                  Comedia
+              <a className="nav-link text-light" href="/comedia">
+                <Comedia>
+                </Comedia>
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-light" href="#">
-                  Drama
+              <a className="nav-link text-light" href="/drama">
+                <Drama>
+                </Drama>
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-light" href="#">
-                  Romance
+              <a className="nav-link text-light" href="/Romance">
+                <Romance>
+                </Romance>
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-light" href="#">
-                  Terror
+              <a className="nav-link text-light" href="/Terror">
+                <Terror>
+                </Terror>
                 </a>
               </li>
             </ul>
@@ -123,7 +130,6 @@ export const Navbar = () => {
           </div>
         </div>
       </nav>
-      ;
     </>
   );
 };
