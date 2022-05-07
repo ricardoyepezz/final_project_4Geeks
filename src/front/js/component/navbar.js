@@ -3,12 +3,16 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Login } from "./login";
+<<<<<<< HEAD
 import { Home } from "../pages/home";
 import { Animacion } from "../pages/animacion";
 import { Comedia } from "../pages/comedia";
 import { Drama } from "../pages/drama";
 import { Romance } from "../pages/romance";
 import { Terror } from "../pages/terror";
+=======
+import { Register } from "./formulario";
+>>>>>>> formulario
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
@@ -19,6 +23,56 @@ export const Navbar = () => {
       <div className="up-navbar col-12 d-lg-block">
         <img src="https://img.icons8.com/color/80/000000/m-cute.png" />
         oviez
+        <div className="login d-inline-block">
+          {!store.token ? (
+            <a
+              className="nav-link text-white "
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              Register
+            </a>
+          ) : (
+            <a
+              className="nav-link text-white "
+              type="button"
+              onClick={() => actions.logout()}
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              Log Out
+            </a>
+          )}
+
+          {/* <!-- Modal --> */}
+          <div
+            className="modal fade"
+            id="exampleModal"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title text-dark" id="exampleModalLabel">
+                    Registro
+                  </h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div className="modal-body text-dark">
+                  <Register />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/*  */}
         <div className="login d-inline-block">
           {!store.token ? (
             <a
