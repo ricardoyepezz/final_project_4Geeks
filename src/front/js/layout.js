@@ -7,11 +7,13 @@ import { Single } from "./pages/single";
 import { Register } from "./pages/register";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
-<<<<<<< HEAD
-import { Footer } from "./component/footer";
+import { Animacion } from "./pages/animacion";
+import { Comedia } from "./pages/comedia";
+import { Drama } from "./pages/drama";
+import { Romance } from "./pages/romance";
+import { Terror } from "./pages/terror"import { Footer } from "./component/footer";
 import { Formulario} from "./component/formulario";
-=======
->>>>>>> Home
+
 
 //create your first component
 const Layout = () => {
@@ -31,23 +33,33 @@ const Layout = () => {
             <Route exact path="/demo">
               <Demo />
             </Route>
+            <Route exact path="/animacion">
+              <Animacion />
+            </Route>
+            <Route exact path="/comedia">
+              <Comedia />
+            </Route>
+            <Route exact path="/drama">
+              <Drama />
+            </Route>
+            <Route exact path="/romance">
+              <Romance />
+            </Route>
+            <Route exact path="/Terror">
+              <Terror />
+            </Route>
             <Route exact path="/single/:theid">
               <Single />
             </Route>
-<<<<<<< HEAD
             <Route exact path="/register">
               <Formulario />
             </Route>
-=======
->>>>>>> Home
             <Route>
               <h1>Not found!</h1>
             </Route>
           </Switch>
-<<<<<<< HEAD
-          <Footer />
-=======
->>>>>>> Home
+ <Footer />
+
         </ScrollToTop>
       </BrowserRouter>
     </div>
