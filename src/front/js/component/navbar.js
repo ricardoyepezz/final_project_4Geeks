@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Login } from "./login";
-import {Animacion} from "../pages/animacion";
+import { Animacion } from "../pages/animacion";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
@@ -80,11 +80,14 @@ export const Navbar = () => {
                   Inicio
                 </a>
               </li>
+              <Animacion to="/animacion">
               <li className="nav-item">
                 <a className="nav-link text-light" href="#">
                   Animación
                 </a>
               </li>
+              </Animacion>
+
               <li className="nav-item">
                 <a className="nav-link text-light" href="#">
                   Comedia
