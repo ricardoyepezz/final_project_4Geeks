@@ -17,7 +17,7 @@ export const Navbar = () => {
   return (
     <>
       <div className="up-navbar col-12 d-lg-block">
-        <img src="https://img.icons8.com/color/80/000000/m-cute.png" />
+        <img className="img"src="https://img.icons8.com/color/80/000000/m-cute.png" />
         oviez
         <div className="login d-inline-block">
           {!store.token ? (

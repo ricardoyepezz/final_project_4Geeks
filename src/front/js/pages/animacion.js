@@ -8,7 +8,7 @@ export const Animacion = () => {
       <div className="row container-fluid col-12">
         <div
           id="carouselExampleFade"
-          className="carousel slide carousel-fade w-50"
+          className="carousel slide carousel-fade w-50 col-8"
           data-bs-ride="carousel"
         >
           <div className="carousel-inner">
@@ -61,68 +61,75 @@ export const Animacion = () => {
         </div>
 
 
-		<div className=" SideRight row col-6">
-        <div className="d-flex col-3">
-          <div class="card">
-		  <img src="..."/>
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">
+		<div className=" SideRight row col-4">
+			<div className="SideTitle">Recomendadas del género</div>
+			<div className="card col-6 mx-auto d-block">
+			<h5 className="card-title">Special title treatment</h5>
+			<div className="img1 mx-auto">
+		  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU"/></div>
+            <div className="card-body col-12">
+
+              <p className="card-text">
                 With supporting text below as a natural lead-in to additional
                 content.
               </p>
-              <a href="#" class="btn btn-primary">
+              <a href="#" className="btn btn-primary">
                 Go somewhere
               </a>
             </div>
           </div>
-        </div>
-		<div className="d-flex col-3">
-          <div class="card">
-		  <img src="..."/>
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">
+
+		  <span></span>
+
+		  <div className="card col-6 mx-auto d-block">
+			<h5 className="card-title">Special title treatment</h5>
+			<div className="img1">
+		  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU"/></div>
+            <div className="card-body col-12">
+
+              <p className="card-text">
                 With supporting text below as a natural lead-in to additional
                 content.
               </p>
-              <a href="#" class="btn btn-primary">
+              <a href="#" className="btn btn-primary">
                 Go somewhere
               </a>
             </div>
           </div>
-        </div>
-		<div className="d-flex col-3">
-          <div class="card">
-		  <img src="..."/>
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">
+
+		  <span></span>
+		  <div className="card col-6 mx-auto d-block">
+			<h5 className="card-title">Special title treatment</h5>
+			<div className="img1">
+		  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU"/></div>
+            <div className="card-body col-12">
+
+              <p className="card-text">
                 With supporting text below as a natural lead-in to additional
                 content.
               </p>
-              <a href="#" class="btn btn-primary">
+              <a href="#" className="btn btn-primary">
                 Go somewhere
               </a>
             </div>
           </div>
-        </div>
-		<div className="d-flex col-3">
-          <div class="card">
-		  <img src="..."/>
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">
+		  <span></span>
+		  <div className="card col-6 mx-auto d-block">
+			<h5 className="card-title">Special title treatment</h5>
+			<div className="img1">
+		  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU"/></div>
+            <div className="card-body col-12">
+
+              <p className="card-text">
                 With supporting text below as a natural lead-in to additional
                 content.
               </p>
-              <a href="#" class="btn btn-primary">
+              <a href="#" className="btn btn-primary">
                 Go somewhere
               </a>
             </div>
           </div>
-        </div></div>
-      </div>
+        </div>		  </div>
     </>
   );
 };

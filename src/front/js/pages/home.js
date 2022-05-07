@@ -13,7 +13,7 @@ export const Home = () => {
 
   return (
     <>
-      <div className="container text-center mt-5">
+      <div className="container-fluid text-center mt-5">
         <div className="alert alert-info">{store.message}</div>
         <div
           id="carouselExampleFade"
