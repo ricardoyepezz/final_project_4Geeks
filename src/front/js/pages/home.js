@@ -1,19 +1,26 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
+import { useEffect } from "react";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
 
+  useEffect(() => {
+    if (store.token && store.token != "" && store.token != undefined)
+      actions.getMessage();
+  }, [store.token]);
+
   return (
     <>
       <div className="container text-center mt-5">
+        <div className="alert alert-info">{store.message}</div>
         <div
           id="carouselExampleFade"
-          class="carousel slide carousel-fade w-50"
+          className="carousel slide carousel-fade w-50"
           data-bs-ride="carousel"
         >
-          <div class="carousel-inner">
+          <div className="carousel-inner">
             <div className="carousel-item active">
               <img
                 src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/480/public/media/image/2021/11/avatar-2520685.jpg?itok=-Znp5ZFb"
@@ -68,7 +75,7 @@ export const Home = () => {
                 With supporting text below as a natural lead-in to additional
                 content.
               </p>
-              <a href="#" class="btn btn-primary">
+              <a href="#" className="btn btn-primary">
                 Go somewhere
               </a>
             </div>
