@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Login } from "./login";
+import { Home } from "../pages/home";
 import { Animacion } from "../pages/animacion";
-import {Comedia} from "../pages/comedia";
-import {Drama} from "../pages/drama";
-import {Romance} from "../pages/romance";
-import {Terror} from "../pages/terror";
+import { Comedia } from "../pages/comedia";
+import { Drama } from "../pages/drama";
+import { Romance } from "../pages/romance";
+import { Terror } from "../pages/terror";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
@@ -80,39 +81,34 @@ export const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link text-light" aria-current="page" href="#">
+                <a className="nav-link text-light" aria-current="home" href="/">
                   Inicio
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link text-light" href="/animacion">
-                <Animacion>
-                </Animacion>
+                  Animación
                 </a>
               </li>
 
               <li className="nav-item">
-              <a className="nav-link text-light" href="/comedia">
-                <Comedia>
-                </Comedia>
+                <a className="nav-link text-light" href="/comedia">
+                  Comedia
                 </a>
               </li>
               <li className="nav-item">
-              <a className="nav-link text-light" href="/drama">
-                <Drama>
-                </Drama>
+                <a className="nav-link text-light" href="/drama">
+                  Drama
                 </a>
               </li>
               <li className="nav-item">
-              <a className="nav-link text-light" href="/Romance">
-                <Romance>
-                </Romance>
+                <a className="nav-link text-light" href="/Romance">
+                  Romance
                 </a>
               </li>
               <li className="nav-item">
-              <a className="nav-link text-light" href="/Terror">
-                <Terror>
-                </Terror>
+                <a className="nav-link text-light" href="/Terror">
+                  Terror
                 </a>
               </li>
             </ul>
