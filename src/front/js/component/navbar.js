@@ -3,16 +3,14 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Login } from "./login";
-<<<<<<< HEAD
 import { Home } from "../pages/home";
 import { Animacion } from "../pages/animacion";
 import { Comedia } from "../pages/comedia";
 import { Drama } from "../pages/drama";
 import { Romance } from "../pages/romance";
 import { Terror } from "../pages/terror";
-=======
 import { Register } from "./formulario";
->>>>>>> formulario
+
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
