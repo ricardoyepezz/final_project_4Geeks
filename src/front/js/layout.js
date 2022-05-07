@@ -4,13 +4,16 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
+import { Register } from "./pages/register";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Animacion } from "./pages/animacion";
 import { Comedia } from "./pages/comedia";
 import { Drama } from "./pages/drama";
 import { Romance } from "./pages/romance";
-import { Terror } from "./pages/terror";
+import { Terror } from "./pages/terror"import { Footer } from "./component/footer";
+import { Formulario} from "./component/formulario";
+
 
 //create your first component
 const Layout = () => {
@@ -48,10 +51,15 @@ const Layout = () => {
             <Route exact path="/single/:theid">
               <Single />
             </Route>
+            <Route exact path="/register">
+              <Formulario />
+            </Route>
             <Route>
               <h1>Not found!</h1>
             </Route>
           </Switch>
+ <Footer />
+
         </ScrollToTop>
       </BrowserRouter>
     </div>
