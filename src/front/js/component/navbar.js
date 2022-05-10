@@ -11,10 +11,10 @@ export const Navbar = () => {
   return (
     <>
       {/*  ---------------first navbar----------------- */}
-      <div class="up-navbar d-flex bd-highlight">
+      <div className="up-navbar d-flex bd-highlight">
         {/*  ---------------Logo----------------- */}
 
-        <div class="me-auto p-2 bd-highlight">
+        <div className="me-auto p-2 bd-highlight">
           <img
             className="img"
             src="https://img.icons8.com/color/80/000000/m-cute.png"
@@ -23,7 +23,7 @@ export const Navbar = () => {
         </div>
         {/*  ---------------sign-up button ----------------- */}
 
-        <div class="p-2 bd-highlight">
+        <div className="p-2 bd-highlight">
           <a
             className="nav-link text-white d-flex justify-content-end"
             type="button"
@@ -35,7 +35,7 @@ export const Navbar = () => {
         </div>
         {/*  ---------------login logout button ----------------- */}
 
-        <div class="p-2 bd-highlight">
+        <div className="p-2 bd-highlight">
           {!store.token ? (
             <a
               className="nav-link text-white "
