@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { useEffect } from "react";
+import { Form } from "../component/form";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -15,6 +16,7 @@ export const Home = () => {
     <>
       <div className="container-fluid text-center mt-5">
         <div className="alert alert-info">{store.message}</div>
+
         <div
           id="carouselExampleFade"
           className="carousel slide carousel-fade w-50"
