@@ -11,21 +11,14 @@ export const Navbar = () => {
 
   return (
     <>
-      <div className="up-navbar col-12 d-lg-block">
+
+<div className="up-navbar col-12 d-lg-block">
         <img className="logo" src={Popcorn} />
         oviez
         <div className="login d-inline-block">
-      {/*  ---------------first navbar----------------- */}
-      <div className="up-navbar d-flex bd-highlight">
         {/*  ---------------Logo----------------- */}
 
-        <div className="me-auto p-2 bd-highlight">
-          <img
-            className="img"
-            src="https://img.icons8.com/color/80/000000/m-cute.png"
-          />
-          oviez
-        </div>
+
         {/*  ---------------sign-up button ----------------- */}
 
         <div className="p-2 bd-highlight">
@@ -174,7 +167,7 @@ export const Navbar = () => {
             </form>
           </div>
         </div>
-      </nav></div></div>
+      </nav></div>
     </> 
   );
 };
