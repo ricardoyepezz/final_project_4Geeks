@@ -28,8 +28,7 @@ def get_hello():
 
     email = get_jwt_identity()
     dictionary = {
-        "message": "hello " + email
+        "message": "hello " + username
     }
     return jsonify(dictionary)
 
-    

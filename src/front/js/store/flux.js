@@ -47,7 +47,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         // fetching data from the backend
         fetch(
-          "https://3001-ricardoyepe-finalprojec-0stjy0b9fpo.ws-us44.gitpod.io/api/hello",
+          "https://3001-ricardoyepe-finalprojec-7c9fqx6742d.ws-us44.gitpod.io/api/hello",
           opts
         )
           .then((resp) => resp.json())
@@ -71,7 +71,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         try {
           const resp = await fetch(
-            "https://3001-ricardoyepe-finalprojec-0stjy0b9fpo.ws-us44.gitpod.io/api/token",
+            "https://3001-ricardoyepe-finalprojec-7c9fqx6742d.ws-us44.gitpod.io/api/token",
             opts
           );
           if (resp.status !== 200) {

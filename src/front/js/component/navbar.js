@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Login } from "./login";
+<<<<<<< HEAD
 import { Home } from "../pages/home";
 import { Animacion } from "../pages/animacion";
 import { Comedia } from "../pages/comedia";
@@ -11,6 +11,9 @@ import { Romance } from "../pages/romance";
 import { Terror } from "../pages/terror";
 import { Register } from "./formulario";
 
+=======
+import { Form } from "../component/form";
+>>>>>>> 4c56954b168b3e88ac890c73f09b568ac3d4652b
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
@@ -18,10 +21,32 @@ export const Navbar = () => {
 
   return (
     <>
-      <div className="up-navbar col-12 d-lg-block">
-        <img src="https://img.icons8.com/color/80/000000/m-cute.png" />
-        oviez
-        <div className="login d-inline-block">
+      {/*  ---------------first navbar----------------- */}
+      <div class="up-navbar d-flex bd-highlight">
+        {/*  ---------------Logo----------------- */}
+
+        <div class="me-auto p-2 bd-highlight">
+          <img
+            className="img"
+            src="https://img.icons8.com/color/80/000000/m-cute.png"
+          />
+          oviez
+        </div>
+        {/*  ---------------sign-up button ----------------- */}
+
+        <div class="p-2 bd-highlight">
+          <a
+            className="nav-link text-white d-flex justify-content-end"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#signupModal"
+          >
+            Sign-Up
+          </a>
+        </div>
+        {/*  ---------------login logout button ----------------- */}
+
+        <div class="p-2 bd-highlight">
           {!store.token ? (
             <a
               className="nav-link text-white "
@@ -92,42 +117,70 @@ export const Navbar = () => {
               Log Out
             </a>
           )}
+        </div>
 
-          {/* <!-- Modal --> */}
-          <div
-            className="modal fade"
-            id="exampleModal"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title text-dark" id="exampleModalLabel">
-                    Login
-                  </h5>
-                  <button
-                    type="button"
-                    className="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div className="modal-body text-dark">
-                  {store.token &&
-                  store.token != "" &&
-                  store.token != undefined ? (
-                    "Successful Log In"
-                  ) : (
-                    <Login />
-                  )}
-                </div>
+        {/* <!------------------- Modal Log In-------------------> */}
+        <div
+          className="modal fade"
+          id="exampleModal"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title text-dark" id="exampleModalLabel">
+                  Login
+                </h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body text-dark">
+                {store.token &&
+                store.token != "" &&
+                store.token != undefined ? (
+                  "Successful Log In"
+                ) : (
+                  <Login />
+                )}
               </div>
             </div>
           </div>
         </div>
       </div>
-      {/* second Navbar */}
+
+      {/* <!------------------- Modal Sign up--------------------------> */}
+      <div
+        className="modal fade"
+        id="signupModal"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title text-dark" id="exampleModalLabel">
+                Sign Up
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body text-dark">
+              <Form />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/*--------------- second Navbar----------------------- */}
       <nav className="navbar navbar-expand-lg navbar-light bg-dark">
         <div className="container-fluid">
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
