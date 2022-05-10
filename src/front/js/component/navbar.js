@@ -15,6 +15,32 @@ export const Navbar = () => {
         <img className="logo" src={Popcorn} />
         oviez
         <div className="login d-inline-block">
+      {/*  ---------------first navbar----------------- */}
+      <div className="up-navbar d-flex bd-highlight">
+        {/*  ---------------Logo----------------- */}
+
+        <div className="me-auto p-2 bd-highlight">
+          <img
+            className="img"
+            src="https://img.icons8.com/color/80/000000/m-cute.png"
+          />
+          oviez
+        </div>
+        {/*  ---------------sign-up button ----------------- */}
+
+        <div className="p-2 bd-highlight">
+          <a
+            className="nav-link text-white d-flex justify-content-end"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#signupModal"
+          >
+            Sign-Up
+          </a>
+        </div>
+        {/*  ---------------login logout button ----------------- */}
+
+        <div className="p-2 bd-highlight">
           {!store.token ? (
             <a
               className="nav-link text-white "
@@ -148,7 +174,7 @@ export const Navbar = () => {
             </form>
           </div>
         </div>
-      </nav>
-    </>
+      </nav></div></div>
+    </> 
   );
 };
