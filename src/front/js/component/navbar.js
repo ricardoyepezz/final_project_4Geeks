@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Login } from "./login";
 import { Form } from "../component/form";
+import Popcorn from "/workspace/final_project_4Geeks/src/front/img/popcorn.png"
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
@@ -10,32 +11,10 @@ export const Navbar = () => {
 
   return (
     <>
-      {/*  ---------------first navbar----------------- */}
-      <div class="up-navbar d-flex bd-highlight">
-        {/*  ---------------Logo----------------- */}
-
-        <div class="me-auto p-2 bd-highlight">
-          <img
-            className="img"
-            src="https://img.icons8.com/color/80/000000/m-cute.png"
-          />
-          oviez
-        </div>
-        {/*  ---------------sign-up button ----------------- */}
-
-        <div class="p-2 bd-highlight">
-          <a
-            className="nav-link text-white d-flex justify-content-end"
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#signupModal"
-          >
-            Sign-Up
-          </a>
-        </div>
-        {/*  ---------------login logout button ----------------- */}
-
-        <div class="p-2 bd-highlight">
+      <div className="up-navbar col-12 d-lg-block">
+        <img className="logo" src={Popcorn} />
+        oviez
+        <div className="login d-inline-block">
           {!store.token ? (
             <a
               className="nav-link text-white "

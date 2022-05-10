@@ -1,13 +1,12 @@
-.cuerpo{
-background-image: url("https://static.vecteezy.com/system/resources/previews/001/269/787/large_2x/popcorn-bucket-on-yellow-background-free-photo.jpg");
-opacity:10%;
-
+.cuerpo {
+  background-color: black;
 }
 
 .up-navbar {
   color: aliceblue;
   background-color: rgb(36, 33, 83);
   font-size: xx-large;
+  font-family: "Anton", sans-serif;
 }
 
 .login {
@@ -15,29 +14,35 @@ opacity:10%;
   font-size: x-large;
 }
 
-
 .SideTitle {
-font-family:monospace;
-text-align:center;
-font-size:xx-large;
-color:rgb(110, 100, 40);
-background-color:rgb(36, 33, 83);
+  font-family: monospace;
+  text-align: center;
+  font-size: xx-large;
+  color: rgb(110, 100, 40);
+  background-color: rgb(36, 33, 83);
 }
 
 .SideRight {
-height:auto;
-background-color:gold;
+  height: auto;
+  border-radius: 3%;
+  background: linear-gradient(
+    rgb(244, 244, 3),
+    rgb(163, 88, 51),
+    rgb(208, 74, 59)
+  );
 }
 
 .card {
-  text-align:center;
+  text-align: center;
   border-image-width: 10px;
 }
 
 .img1 {
-  width:auto;
+  width: auto;
   height: auto;
 }
 
-
-
+.logo {
+  height: 45px;
+  width: 45px;
+}

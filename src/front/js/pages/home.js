@@ -14,9 +14,9 @@ export const Home = () => {
 
   return (
     <>
-      <div className="container-fluid text-center mt-5">
-        <div className="alert alert-info">{store.message}</div>
-
+      <div className="cuerpo container-fluid">
+        <div className="alert">{store.message}</div>
+        <div className="row container-fluid col-12">
         <div
           id="carouselExampleFade"
           className="carousel slide carousel-fade w-50"
@@ -83,7 +83,79 @@ export const Home = () => {
             </div>
           </div>
         </div>
+        <div className="col-2"></div>
+
+          <div className=" SideRight row col-4">
+            <div className="SideTitle">Recomendadas del género</div>
+            <div className="card col-6 mx-auto d-block">
+              <h5 className="card-title">Special title treatment</h5>
+              <div className="img1 mx-auto">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU" />
+              </div>
+              <div className="card-body col-12">
+                <p className="card-text">
+                  With supporting text below as a natural lead-in to additional
+                  content.
+                </p>
+                <a href="#" className="btn btn-primary">
+                  Go somewhere
+                </a>
+              </div>
+            </div>
+
+            <span></span>
+
+            <div className="card col-6 mx-auto d-block">
+              <h5 className="card-title">Special title treatment</h5>
+              <div className="img1">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU" />
+              </div>
+              <div className="card-body col-12">
+                <p className="card-text">
+                  With supporting text below as a natural lead-in to additional
+                  content.
+                </p>
+                <a href="#" className="btn btn-primary">
+                  Go somewhere
+                </a>
+              </div>
+            </div>
+
+            <span></span>
+            <div className="card col-6 mx-auto d-block">
+              <h5 className="card-title">Special title treatment</h5>
+              <div className="img1">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU" />
+              </div>
+              <div className="card-body col-12">
+                <p className="card-text">
+                  With supporting text below as a natural lead-in to additional
+                  content.
+                </p>
+                <a href="#" className="btn btn-primary">
+                  Go somewhere
+                </a>
+              </div>
+            </div>
+            <span></span>
+            <div className="card col-6 mx-auto d-block">
+              <h5 className="card-title">Special title treatment</h5>
+              <div className="img1">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU" />
+              </div>
+              <div className="card-body col-12">
+                <p className="card-text">
+                  With supporting text below as a natural lead-in to additional
+                  content.
+                </p>
+                <a href="#" className="btn btn-primary">
+                  Go somewhere
+                </a>
+              </div>
+            </div>
+          </div>{" "}
       </div>
-    </>
+      </div>
+      </>
   );
 };
