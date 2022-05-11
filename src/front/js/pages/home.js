@@ -44,8 +44,7 @@ export const Home = () => {
                 alt="..."
               />
             </div>
-          </div>
-          <button
+            <button
             className="carousel-control-prev"
             type="button"
             data-bs-target="#carouselExampleFade"
@@ -69,6 +68,7 @@ export const Home = () => {
             ></span>
             <span className="visually-hidden">Next</span>
           </button>
+          </div>
 
           <div className="recomendadas card text-end mt-5">
             <div className="card-body">
@@ -138,7 +138,7 @@ export const Home = () => {
               </div>
             </div>
             <span></span>
-            <div className="card col-6 mx-auto d-block">
+            <div className="card-down col-6 mx-auto d-block">
               <h5 className="card-title">Special title treatment</h5>
               <div className="img1">
                 <img className="imgside col-6"src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU" />
