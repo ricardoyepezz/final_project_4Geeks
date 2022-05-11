@@ -4,21 +4,31 @@
 
 .up-navbar {
   color: aliceblue;
-  background-color: rgb(40, 36, 68);
-  font-size: xx-large;
+  background-color: rgb(17, 16, 23);
+  font-size: x-large;
   font-family: "Anton", sans-serif;
 }
 
 .login {
   float: right;
-  font-size: x-large;
+  font-size: large;
 }
 
 .SideTitle {
+  border: yellow 5px dotted;
   font-family: monospace;
   text-align: center;
-  font-size: xx-large;
-  color: rgb(110, 100, 40);
+  font-size: 40px;
+  color: rgb(233, 198, 0);
+  background-color: rgb(36, 33, 83);
+}
+
+.SideTitle1 {
+  border: yellow 5px dotted;
+  font-family: monospace;
+  text-align: center;
+  font-size: 30px;
+  color: rgb(233, 198, 0);
   background-color: rgb(36, 33, 83);
 }
 
