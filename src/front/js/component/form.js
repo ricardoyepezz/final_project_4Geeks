@@ -8,27 +8,28 @@ export const Form = () => {
     reset,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => {
-    console.log(data);
     if (data.password === data.confirmPassword) {
-      const body = {
-        name: data.name,
-        email: data.email,
-        content: data.content,
-        password: data.password,
-      };
-      const requestOptions = {
-        methods: "POST",
+      console.log(data);
+
+      let requestOptions = {
+        method: "POST",
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          content: data.content,
+          password: data.password,
+        }),
       };
       fetch(
-        "https://3001-ricardoyepe-finalprojec-zcyreismxqe.ws-us44.gitpod.io/api/signup",
+        "https://3001-ricardoyepe-finalprojec-55b219ikf81.ws-us44.gitpod.io/api/signup",
         requestOptions
       )
-        .then((res) => res.json())
+        .then((res) => res.text())
         .then((data) => console.log(data))
         .catch((err) => console.log(err));
 
