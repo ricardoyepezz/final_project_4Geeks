@@ -70,16 +70,29 @@ export const Home = () => {
           </button>
           </div>
 
-          <div className="recomendadas card text-end mt-5">
+          <div className="recomendadas card text-start mt-5">
             <div className="card-body">
-              <h5 className="card-title ">Special title treatment</h5>
-              <p className="card-text">
+              <h5 className="card-title ">🍿Noticias y Estrenos🍿</h5>
+              <div>
+                <p className="card-text">
+                <img className="cardPic" src="https://vader.news/__export/1589127555217/sites/gadgets/img/2020/05/10/avatar-2-baby.jpg_672404822.jpg"/>
                 With supporting text below as a natural lead-in to additional
                 content.
               </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
+              <a href="#" className="btn btn-dark">
+                Ver más➜...
+              </a></div>
+
+              <span></span>
+
+              <div><p className="card-text">
+                <img className="cardPic" src="https://i.ytimg.com/vi/1lZuVNZyukU/maxresdefault.jpg"/>
+                With supporting text below as a natural lead-in to additional
+                content.
+              </p>
+              <a href="#" className="btn btn-dark">
+                Ver más➜...
+              </a></div>
             </div>
           </div>
         </div>
