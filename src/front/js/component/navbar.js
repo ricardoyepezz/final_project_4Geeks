@@ -22,8 +22,7 @@ export const Navbar = () => {
             <a
               className="nav-link text-white d-flex justify-content-end"
               type="button"
-              data-bs-toggle="modal"
-              data-bs-target="#signupModal"
+              href="/signup"
             >
               Sign-Up
             </a>
@@ -82,32 +81,6 @@ export const Navbar = () => {
                     <Login />
                   )}
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* <!------------------- Modal Sign up--------------------------> */}
-        <div
-          className="modal fade"
-          id="signupModal"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title text-dark" id="exampleModalLabel">
-                  Sign Up
-                </h5>
-                <button
-                  type="button"
-                  className="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div className="modal-body text-dark">
-                <Form />
               </div>
             </div>
           </div>
