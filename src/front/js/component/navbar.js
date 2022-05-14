@@ -2,7 +2,6 @@ import React from "react";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Login } from "./login";
-import { Form } from "../component/form";
 import Popcorn from "/workspace/final_project_4Geeks/src/front/img/popcorn.png";
 
 export const Navbar = () => {

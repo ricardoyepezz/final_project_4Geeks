@@ -1,49 +1,39 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
+import { Context } from "../store/appContext";
+import Swal from "sweetalert2";
 
 export const Form = () => {
-  const history = useHistory();
+  const { store, actions } = useContext(Context);
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
+  const history = useHistory();
 
   const onSubmit = (data) => {
     if (data.password === data.confirmPassword) {
-      console.log(data);
+      actions.signup(data);
 
-      let requestOptions = {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-          content: data.content,
-          password: data.password,
-        }),
-      };
-      fetch(
-        "https://3001-ricardoyepe-finalprojec-j735wthtjpw.ws-us45.gitpod.io/api/signup",
-        requestOptions
-      )
-        .then((res) => res.text())
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
-      history.push("/");
-
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Successful registration",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       reset();
+      history.push("/");
     } else {
       alert("Passwords do not match");
     }
   };
 
   return (
-    <div className="container text center">
+    <div className="container text center w-50 mt-5 p-3 border border-dark rounded-3">
       <form className="text-dark" onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-3">
           <label className="form-label">Name</label>
@@ -75,21 +65,7 @@ export const Form = () => {
             </span>
           )}
         </div>
-        <div className="mb-3">
-          <label className="form-label">Content Preference</label>
 
-          <select
-            className="form-control"
-            {...register("content", { required: true })}
-          >
-            <option>Choose</option>
-            <option value="Animación">Animación</option>
-            <option value="Comedia">Comedia</option>
-            <option value="Drama">Drama</option>
-            <option value="Romance">Romance</option>
-            <option value="Terror">Terror</option>
-          </select>
-        </div>
         <div className="mb-3">
           <label className="form-label">Password</label>
 
@@ -104,7 +80,7 @@ export const Form = () => {
               Password is required
             </span>
           )}
-          <br></br>
+
           {errors.password?.type === "minLength" && (
             <span className="fw-light" style={{ color: "red" }}>
               Min Characters should be 8
@@ -132,8 +108,10 @@ export const Form = () => {
             </span>
           )}
         </div>
-        <div className="mb-3">
-          <input type="submit" />
+        <div className="mb-3 text-center">
+          <button type="submit" className="btn btn-dark btn-lg">
+            Send
+          </button>
         </div>
       </form>
     </div>

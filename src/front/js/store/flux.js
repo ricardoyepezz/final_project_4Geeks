@@ -3,24 +3,9 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       token: null,
       message: null,
-      demo: [
-        {
-          title: "FIRST",
-          background: "white",
-          initial: "white",
-        },
-        {
-          title: "SECOND",
-          background: "white",
-          initial: "white",
-        },
-      ],
     },
     actions: {
-      // Use getActions to call a function within a fuction
-      exampleFunction: () => {
-        getActions().changeColor(0, "green");
-      },
+      // --------------- Function sync token with SS
 
       syncTokenFromSessionStorage: () => {
         const token = sessionStorage.getItem("token");
@@ -31,12 +16,16 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ token: token });
       },
 
+      // --------------- Function log out
+
       logout: () => {
         sessionStorage.removeItem("token");
         console.log("Login out");
         setStore({ token: null });
         setStore({ message: null });
       },
+
+      // --------------- Function get message Home
 
       getMessage: () => {
         const store = getStore();
@@ -47,7 +36,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
         // fetching data from the backend
         fetch(
-          "https://3001-ricardoyepe-finalprojec-7c9fqx6742d.ws-us44.gitpod.io/api/hello",
+          "https://3001-ricardoyepe-finalprojec-yw0fl61y8q1.ws-us45.gitpod.io/api/hello",
           opts
         )
           .then((resp) => resp.json())
@@ -56,6 +45,29 @@ const getState = ({ getStore, getActions, setStore }) => {
             console.log("Error loading message from backend", error)
           );
       },
+      // --------------- Function sign up
+      signup: (data) => {
+        const opts = {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            password: data.password,
+          }),
+        };
+        fetch(
+          "https://3001-ricardoyepe-finalprojec-yw0fl61y8q1.ws-us45.gitpod.io/api/signup",
+          opts
+        )
+          .then((res) => res.text())
+          .then((data) => console.log(data))
+          .catch((err) => console.log(err));
+      },
+
+      // --------------- function log in
 
       login: async (email, password) => {
         const opts = {
@@ -71,7 +83,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         try {
           const resp = await fetch(
-            "https://3001-ricardoyepe-finalprojec-7c9fqx6742d.ws-us44.gitpod.io/api/token",
+            "https://3001-ricardoyepe-finalprojec-yw0fl61y8q1.ws-us45.gitpod.io/api/token",
             opts
           );
           if (resp.status !== 200) {
@@ -87,21 +99,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         } catch (error) {
           console.log("There was an error", error);
         }
-      },
-
-      changeColor: (index, color) => {
-        //get the store
-        const store = getStore();
-
-        //we have to loop the entire demo array to look for the respective index
-        //and change its color
-        const demo = store.demo.map((elm, i) => {
-          if (i === index) elm.background = color;
-          return elm;
-        });
-
-        //reset the global store
-        setStore({ demo: demo });
       },
     },
   };
