@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Login } from "./login";
 import Popcorn from "/workspace/final_project_4Geeks/src/front/img/popcorn.png";
+import {Perfil} from "/workspace/final_project_4Geeks/src/front/js/pages/perfil.js"
+import { Menuperfil } from "/workspace/final_project_4Geeks/src/front/js/component/menuperfil.js"
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
@@ -15,6 +17,7 @@ export const Navbar = () => {
         <img className="logo" src={Popcorn} />
         oviez
         <div className="login d-inline-block">
+
           {/*  ---------------sign-up button ----------------- */}
 
           <div className="p-2 bd-highlight">
@@ -139,6 +142,7 @@ export const Navbar = () => {
                   🔎
                 </button>
               </form>
+              <Menuperfil/>
             </div>
           </div>
         </nav>

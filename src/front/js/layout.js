@@ -11,6 +11,9 @@ import { Comedia } from "./pages/comedia";
 import { Drama } from "./pages/drama";
 import { Romance } from "./pages/romance";
 import { Terror } from "./pages/terror";
+import { Menuperfil } from "./component/menuperfil.js";
+import { Sidebar } from "./component/sidebar.js";
+import { Perfil } from "./pages/perfil";
 
 //create your first component
 const Layout = () => {
@@ -44,6 +47,12 @@ const Layout = () => {
             </Route>
             <Route exact path="/Terror">
               <Terror />
+            </Route>
+            <Route exact path="/perfil">
+              <Perfil />
+            </Route>
+            <Route exact path="/perfil/:menu">
+              <Perfil />
             </Route>
             <Route exact path="/single/:theid">
               <Single />
