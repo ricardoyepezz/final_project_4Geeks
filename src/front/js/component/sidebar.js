@@ -41,7 +41,25 @@ export const Sidebar = () => {
           
         </div>
         
-        <div className="col py-3">CONTENIDO</div>
+        <div className="col py-3 text-warning bg-dark">Mis datos
+        <table class="table table-sm table-dark">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">NickName</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Correo electrónico</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Chilenitox</td>
+      <td>Juan Pérez</td>
+      <td>hola@gmail.com</td>
+    </tr>
+  </tbody>
+</table></div>
       </div>
     </div>
   );
