@@ -10,19 +10,38 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
-from flask_bcrypt import Bcrypt
 
 api = Blueprint('api', __name__)
 
 @api.route("/token", methods=["POST"])
 def create_token():
-    email = request.json.get("email", None)
+    email = request.form['email']
+    password = request.form['password']
+        
+    if not email: return jsonify({"msg": "Email del usuario es requerido!"}), 400
+    if not password: return jsonify({"msg": "Password es requerido!"}), 400
+
+    user = User.query.filter_by(email=email).first()
+
+    if not user: return jsonify({"msg": "email/password son incorrectos"}), 400
+
+    access_token = create_access_token(identity=email)
+
+    data = {
+            "access_token": access_token,
+            "user": user.serialize()
+        }
+       
+    return jsonify(data), 200
+    
+    
+    """ email = request.json.get("email", None)
     password = request.json.get("password", None)
     if email != 'test@gmail.com' or password != '12345678':
         return jsonify({"msg": "Bad email or password"}), 401
 
     access_token = create_access_token(identity=email)
-    return jsonify(access_token=access_token)
+    return jsonify(access_token=access_token) """
 
 @api.route('/signup', methods=["POST"])
 def signup():

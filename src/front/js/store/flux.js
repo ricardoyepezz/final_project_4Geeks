@@ -1,8 +1,10 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+      accepted: false,
       token: null,
       message: null,
+      url: "https://3001-ricardoyepe-finalprojec-d0cbjs3u90u.ws-us45.gitpod.io",
     },
     actions: {
       // --------------- Function sync token with SS
@@ -23,6 +25,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log("Login out");
         setStore({ token: null });
         setStore({ message: null });
+        setStore({ accepted: false });
       },
 
       // --------------- Function get message Home
@@ -35,10 +38,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
         };
         // fetching data from the backend
-        fetch(
-          "https://3001-ricardoyepe-finalprojec-yw0fl61y8q1.ws-us45.gitpod.io/api/hello",
-          opts
-        )
+        const { url } = getStore();
+
+        fetch(`${url}/api/hello`, opts)
           .then((resp) => resp.json())
           .then((data) => setStore({ message: data.message }))
           .catch((error) =>
@@ -58,10 +60,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             password: data.password,
           }),
         };
-        fetch(
-          "https://3001-ricardoyepe-finalprojec-yw0fl61y8q1.ws-us45.gitpod.io/api/signup",
-          opts
-        )
+        const { url } = getStore();
+
+        fetch(`${url}/api/signup`, opts)
           .then((res) => res.text())
           .then((data) => console.log(data))
           .catch((err) => console.log(err));
@@ -69,7 +70,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       // --------------- function log in
 
-      login: async (email, password) => {
+      login: (formData, history) => {
+        const { url } = getStore();
+
+        fetch(`${url}/api/token`, {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("FLUX DATA", data);
+            localStorage.setItem("token", JSON.stringify(data));
+            history.push("/");
+            setStore({ token: data });
+            setStore({ accepted: true });
+          })
+          .catch((error) => console.log("HA OCURRIDO UN ERROR", error));
+      },
+      /* login: async (email, password) => {
         const opts = {
           method: "POST",
           headers: {
@@ -83,7 +101,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         try {
           const resp = await fetch(
-            "https://3001-ricardoyepe-finalprojec-yw0fl61y8q1.ws-us45.gitpod.io/api/token",
+            "https://3001-ricardoyepe-finalprojec-d0cbjs3u90u.ws-us45.gitpod.io/api/token",
             opts
           );
           if (resp.status !== 200) {
@@ -99,7 +117,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         } catch (error) {
           console.log("There was an error", error);
         }
-      },
+      }, */
     },
   };
 };
