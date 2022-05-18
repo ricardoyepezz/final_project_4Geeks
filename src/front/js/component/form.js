@@ -1,119 +1,119 @@
-import React, { useContext } from "react";
-import { useForm } from "react-hook-form";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
-import Swal from "sweetalert2";
 
 export const Form = () => {
-  const { store, actions } = useContext(Context);
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const { actions } = useContext(Context);
+
+  let allGood = false;
+
+  const [registerForm, setRegisterForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  console.log(registerForm);
   const history = useHistory();
 
-  const onSubmit = (data) => {
-    if (data.password === data.confirmPassword) {
-      actions.signup(data);
+  const [registerErrors, setRegisterErrors] = useState({});
 
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Successful registration",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      reset();
-      history.push("/");
-    } else {
-      alert("Passwords do not match");
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    const newState = { ...registerForm };
+    newState[name] = value;
+    setRegisterForm(newState);
+  };
+
+  const handleValidate = (registerForm) => {
+    const errors = {};
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    if (!registerForm.name) {
+      errors.name = "Name is required!";
+      allGood = true;
     }
+    if (!registerForm.email) {
+      errors.email = "Email is required!";
+      allGood = true;
+    } else if (!regex.test(registerForm.email)) {
+      errors.email = "Email not valid!";
+    }
+    if (!registerForm.password) {
+      errors.password = "Password is required!";
+      allGood = true;
+    }
+    return errors;
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setRegisterErrors(handleValidate(registerForm));
+    if (allGood === false) {
+      let formData = new FormData();
+      formData.append("name", registerForm.name);
+      formData.append("email", registerForm.email);
+      formData.append("password", registerForm.password);
+      actions.signup(formData, history);
+      e.target.reset();
+      allGood = true;
+    } else return false;
   };
 
   return (
-    <div className="container text center w-50 mt-5 p-3 border border-dark rounded-3">
-      <form className="text-dark" onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-3">
-          <label className="form-label">Name</label>
-
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Name"
-            {...register("name", { required: true, maxLength: 25 })}
-          />
-          {errors.name && (
-            <span className="fw-light" style={{ color: "red" }}>
-              Name is required
-            </span>
-          )}
+    <>
+      <div className="main-signup">
+        <div className="form-container-signup">
+          <h1 className="title-signup">Sign Up</h1>
+          <form className="form-signup" onSubmit={(e) => handleSubmit(e)}>
+            <div className="mb-3">
+              <input
+                type="text"
+                className="form-control"
+                aria-describedby="emailHelp"
+                id="name"
+                name="name"
+                placeholder="Name"
+                onChange={(e) => {
+                  handleChange(e);
+                }}
+              />
+            </div>
+            <p className="errors-signup">{registerErrors.name}</p>
+            <div className="mb-3">
+              <input
+                type="email"
+                className="form-control"
+                aria-describedby="emailHelp"
+                id="email"
+                name="email"
+                placeholder="Email"
+                onChange={(e) => {
+                  handleChange(e);
+                }}
+              />
+            </div>
+            <p className="errors-signup">{registerErrors.email}</p>
+            <div className="mb-3">
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                name="password"
+                placeholder="Password"
+                onChange={(e) => {
+                  handleChange(e);
+                }}
+              />
+            </div>
+            <p className="errors-signup">{registerErrors.password}</p>
+            <button
+              type="submit"
+              className="btn btn-signup d-grid gap-2 col-6 mx-auto"
+            >
+              Sign up
+            </button>
+          </form>
         </div>
-        <div className="mb-3">
-          <label className="form-label">Email address</label>
-
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Email"
-            {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
-          />
-          {errors.email && (
-            <span className="fw-light" style={{ color: "red" }}>
-              Email is required
-            </span>
-          )}
-        </div>
-
-        <div className="mb-3">
-          <label className="form-label">Password</label>
-
-          <input
-            className="form-control"
-            type="password"
-            placeholder="Password"
-            {...register("password", { required: true, minLength: 8 })}
-          />
-          {errors.password && (
-            <span className="fw-light" style={{ color: "red" }}>
-              Password is required
-            </span>
-          )}
-
-          {errors.password?.type === "minLength" && (
-            <span className="fw-light" style={{ color: "red" }}>
-              Min Characters should be 8
-            </span>
-          )}
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Confirm Password</label>
-
-          <input
-            className="form-control"
-            type="password"
-            placeholder="Confirm Password"
-            {...register("confirmPassword", { required: true, minLength: 8 })}
-          />
-          {errors.confirmPassword && (
-            <span className="fw-light" style={{ color: "red" }}>
-              Confirm password is required
-            </span>
-          )}
-          <br></br>
-          {errors.confirmPassword?.type === "minLength" && (
-            <span className="fw-light" style={{ color: "red" }}>
-              Min Characters should be 8
-            </span>
-          )}
-        </div>
-        <div className="mb-3 text-center">
-          <button type="submit" className="btn btn-dark btn-lg">
-            Send
-          </button>
-        </div>
-      </form>
-    </div>
+      </div>
+    </>
   );
 };

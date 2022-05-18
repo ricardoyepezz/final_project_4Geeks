@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       accepted: false,
       token: null,
       message: null,
-      url: "https://3001-ricardoyepe-finalprojec-d0cbjs3u90u.ws-us45.gitpod.io",
+      url: "https://3001-ricardoyepe-finalprojec-cws0wp2w04s.ws-us45.gitpod.io",
     },
     actions: {
       // --------------- Function sync token with SS
@@ -48,26 +48,21 @@ const getState = ({ getStore, getActions, setStore }) => {
           );
       },
       // --------------- Function sign up
-      signup: (data) => {
-        const opts = {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({
-            name: data.name,
-            email: data.email,
-            password: data.password,
-          }),
-        };
+      signup: (formData, history) => {
         const { url } = getStore();
-
-        fetch(`${url}/api/signup`, opts)
-          .then((res) => res.text())
-          .then((data) => console.log(data))
-          .catch((err) => console.log(err));
+        fetch(`${url}/api/signup`, {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("FLUX DATA", data);
+            localStorage.setItem("token", JSON.stringify(data));
+            setStore({ register: data });
+            history.push("/");
+          })
+          .catch((error) => console.log("HA OCURRIDO UN ERROR", error));
       },
-
       // --------------- function log in
 
       login: (formData, history) => {
