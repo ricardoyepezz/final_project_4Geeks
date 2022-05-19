@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       accepted: false,
       token: null,
       message: null,
-      url: "https://3001-ricardoyepe-finalprojec-cws0wp2w04s.ws-us45.gitpod.io",
+      url: "https://3001-ricardoyepe-finalprojec-n2ss20auki2.ws-us45.gitpod.io",
     },
     actions: {
       // --------------- Function sync token with SS
@@ -20,8 +20,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       // --------------- Function log out
 
-      logout: () => {
-        sessionStorage.removeItem("token");
+      logout: (history) => {
+        localStorage.removeItem("token");
+        history.push("/");
         console.log("Login out");
         setStore({ token: null });
         setStore({ message: null });
@@ -76,7 +77,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => {
             console.log("FLUX DATA", data);
             localStorage.setItem("token", JSON.stringify(data));
-            history.push("/");
+            history.push("/perfil");
             setStore({ token: data });
             setStore({ accepted: true });
           })

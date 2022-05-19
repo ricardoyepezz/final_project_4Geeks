@@ -41,15 +41,7 @@ export const Navbar = () => {
                 Log In
               </a>
             ) : (
-              <a
-                className="nav-link text-white "
-                type="button"
-                onClick={() => actions.logout()}
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-              >
-                Log Out
-              </a>
+              <Menuperfil />
             )}
           </div>
 
@@ -74,7 +66,11 @@ export const Navbar = () => {
                   ></button>
                 </div>
                 <div className="modal-body text-dark">
-                  {store.accepted ? "Successful Log In" : <Login />}
+                  {store.accepted && store.token ? (
+                    "Successful Log In"
+                  ) : (
+                    <Login />
+                  )}
                 </div>
               </div>
             </div>
@@ -135,7 +131,6 @@ export const Navbar = () => {
                   🔎
                 </button>
               </form>
-              <Menuperfil />
             </div>
           </div>
         </nav>
