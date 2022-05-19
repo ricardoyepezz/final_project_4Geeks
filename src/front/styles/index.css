@@ -71,3 +71,9 @@ text-align:end
   border-style: ridge;
 }
 
+
+.carusel_img{
+  height: 340px;
+  max-width: 310px;
+  margin: auto;
+}

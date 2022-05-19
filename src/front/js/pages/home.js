@@ -1,16 +1,31 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
+import MovieCarussel from '../component/MovieCarussel';
 import { useEffect } from "react";
+import { useState } from "react";
 import { Form } from "../component/form";
 
 export const Home = () => {
+  const API_URL="https://api.themoviedb.org/3/movie/popular?api_key=2a8055a3a945fa4660b744a67d6d0f7a";
   const { store, actions } = useContext(Context);
+  const [movies, setMovies]=useState([]);
+  const [query, setQuery]=useState('');
 
   useEffect(() => {
     if (store.token && store.token != "" && store.token != undefined)
       actions.getMessage();
   }, [store.token]);
+
+  useEffect(() => {
+    fetch(API_URL)
+    .then((res)=>res.json())
+    .then(data=>{
+      console.log(data);
+      setMovies(data.results);
+    })
+  }, [])
+
 
   return (
     <>
@@ -22,53 +37,8 @@ export const Home = () => {
           className="carousel slide carousel-fade w-50"
           data-bs-ride="carousel"
         >
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img
-                src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/480/public/media/image/2021/11/avatar-2520685.jpg?itok=-Znp5ZFb"
-                className="d-block w-100"
-                alt="..."
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                src="https://i.ytimg.com/vi/_40CDeU_BwI/maxresdefault.jpg"
-                className="d-block w-100"
-                alt="..."
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                src="https://i.ytimg.com/vi/gn1pz0rnNHs/maxresdefault.jpg"
-                className="d-block w-100"
-                alt="..."
-              />
-            </div>
-            <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleFade"
-            data-bs-slide="prev"
-          >
-            <span
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleFade"
-            data-bs-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Next</span>
-          </button>
-          </div>
+        {movies.map((movieReq)=>
+          <MovieCarussel key={movieReq.id} {...movieReq}/>)}
 
           <div className="recomendadas card text-start mt-5">
             <div className="card-body">
