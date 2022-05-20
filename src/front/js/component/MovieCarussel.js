@@ -2,14 +2,20 @@ import React, { useState } from "react";
 const API_IMG = "https://image.tmdb.org/t/p/w500/";
 
 //aca deje todo lo que se podria utilizar de la api
-const MovieCarussel = ({ titel, poster_path, vote_average, release_date, overview, }) => {
+const MovieCarussel = ({
+  titel,
+  poster_path,
+  vote_average,
+  release_date,
+  overview,
+}) => {
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
   return (
-      //estes es el carussel. aActualmente se repite 1na vez!
+    //estes es el carussel. aActualmente se repite 1na vez!
     <div className="carousel-inner">
       <div className="carousel-item active">
         <div className="carousel-item active">
