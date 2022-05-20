@@ -83,6 +83,46 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch((error) => console.log("HA OCURRIDO UN ERROR", error));
       },
+
+      store: {
+        original_title: {},
+        poster_path:{},
+        favoritos: [],
+      },
+
+      actions: {
+        getTitles: () => {
+          fetch("https://api.themoviedb.org/3/movie/")
+            .then((res) => res.json())
+            .then((data) => {
+              setStore({ original_title: data });
+            })
+            .catch((err) => console.error(err));
+        },
+        getPoster: () => {
+          fetch("https://api.themoviedb.org/3/movie/3/images?api_key=80f219d75335ab45f63896f726188fb5&language=en-US", requestOptions)
+          .then(response => response.text())
+          .then(result => console.log(result))
+          .catch(error => console.log('error', error));
+          },
+
+          addFavorites: (newFavorite) => {
+            const { favorites } = getStore();
+            const fav = favorites.some((item) => item === newFavorite);
+            if (fav === true) {
+              return;
+            } else {
+              setStore(favorites.push(newFavorite));
+            }
+          }},
+          removeFavorites: (index) => {
+            const { favorites } = getStore();
+            favorites.splice(index, 1);
+            setStore(...favorites);
+          },
+  
+
+
       /* login: async (email, password) => {
         const opts = {
           method: "POST",
