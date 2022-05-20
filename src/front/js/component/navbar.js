@@ -3,12 +3,10 @@ import { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Login } from "./login";
 import Popcorn from "/workspace/final_project_4Geeks/src/front/img/popcorn.png";
-import { Perfil } from "/workspace/final_project_4Geeks/src/front/js/pages/perfil.js";
 import { Menuperfil } from "/workspace/final_project_4Geeks/src/front/js/component/menuperfil.js";
 
 export const Navbar = () => {
-  const { store, actions } = useContext(Context);
-  console.log("this is your token: ", store.token);
+  const { store } = useContext(Context);
 
   return (
     <>
