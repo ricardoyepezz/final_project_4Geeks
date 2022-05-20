@@ -19,7 +19,7 @@ export const Sidebar = () => {
               </span>
             </a>
             <a
-              href="/perfil"
+              href="/favoritos"
               className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none"
             >
               <span className="fs-5 d-none d-sm-inline">Favoritos</span>
