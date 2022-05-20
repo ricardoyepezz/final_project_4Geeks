@@ -14,7 +14,7 @@ import { Terror } from "./pages/terror";
 import { Menuperfil } from "./component/menuperfil.js";
 import { Sidebar } from "./component/sidebar.js";
 import { Perfil } from "./pages/perfil";
-import {Favorites} from "./pages/favorites";
+import {Favoritos} from "./pages/favoritos";
 
 
 //create your first component
@@ -56,8 +56,8 @@ const Layout = () => {
             <Route exact path="/perfil/:menu">
               <Perfil />
             </Route>
-            <Route exact path="/favorites/:id">
-              <Favorites />
+            <Route exact path="/favoritos/:id">
+              <Favoritos />
             </Route>
             <Route exact path="/single/:theid">
               <Single />
