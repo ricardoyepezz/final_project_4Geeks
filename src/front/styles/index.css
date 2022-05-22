@@ -1,15 +1,17 @@
-.body { 
-  padding-top: 70px; }
-  
-.cuerpo {
-  background-color: black;
+.navbar {
+  background-color:black;
+  opacity:90%;
+  border:gray;
 }
 
-.up-navbar {
-  color: aliceblue;
-  background-color: rgb(17, 16, 23);
-  font-size: x-large;
-  font-family: "Anton", sans-serif;
+.cuerpo {
+  background-color: black;
+  padding-top:70px;
+}
+
+.movlogo >img {
+  width:70px;
+  height:70px;
 }
 
 .login {
