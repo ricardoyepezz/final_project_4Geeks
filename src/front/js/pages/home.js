@@ -15,9 +15,9 @@ export const Home = () => {
 
   return (
     <>
-      <div className="cuerpo container-fluid">
+      <div className=" cuerpohome col-12">
         <div className="alert">{store.message}</div>
-        <div className="row container-fluid col-12">
+        <div className="cuerpohome row ">
           <div
             id="carouselExampleFade"
             className="carousel slide carousel-fade w-50"

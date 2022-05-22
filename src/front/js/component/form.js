@@ -60,7 +60,7 @@ export const Form = () => {
 
   return (
     <>
-      <div className="main-signup">
+      <div className="cuerpo main-signup">
         <div className="form-container-signup">
           <h1 className="title-signup">Sign Up</h1>
           <form className="form-signup" onSubmit={(e) => handleSubmit(e)}>

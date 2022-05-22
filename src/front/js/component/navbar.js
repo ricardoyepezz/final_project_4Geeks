@@ -9,11 +9,12 @@ export const Navbar = () => {
 
   return (
     <>
-
-      {/*--------------- second Navbar----------------------- */}
+      
       <nav className="navbar fixed-top navbar-expand-lg navbar-light border-bottom border-warning">
         <div className="container-fluid">
-          <div className="movlogo"><img src={Movlogo}/></div>
+        <a className="navbar-brand" href="#">
+      <img src={Movlogo} alt="..." height="70"/>
+    </a>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
@@ -55,11 +56,13 @@ export const Navbar = () => {
                 placeholder="Search"
                 aria-label="Search"
               />
-              <button className="btn btn-outline-success" type="submit">
+              <button className="btn btn-outline-warning" type="submit">
                 🔎
               </button>
             </form>
-            <div className="p-2 bd-highlight">
+
+          {/*  ---------------sign up ----------------- */}
+          <div className="p-2 bd-highlight">
               <a
                 className="nav-link text-white d-flex justify-content-end"
                 type="button"
@@ -68,6 +71,9 @@ export const Navbar = () => {
                 Sign-Up
               </a>
             </div>
+
+{/*  ---------------login logout button ----------------- */}
+
             <div className="p-2 bd-highlight">
               {!store.accepted && !store.token ? (
                 <a
@@ -82,38 +88,38 @@ export const Navbar = () => {
                 <Menuperfil />
               )}
             </div>
-            <div
-              className="modal fade"
-              id="exampleModal"
-              aria-labelledby="exampleModalLabel"
-              aria-hidden="true"
-            >
-              <div className="modal-dialog">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h5
-                      className="modal-title text-dark"
-                      id="exampleModalLabel"
-                    >
-                      Login
-                    </h5>
-                    <button
-                      type="button"
-                      className="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                  <div className="modal-body text-dark">
-                    {store.accepted && store.token ? (
-                      "Successful Log In"
-                    ) : (
-                      <Login />
-                    )}
-                  </div>
+             {/* <!------------------- Modal Log In-------------------> */}
+             <div
+            className="modal fade"
+            id="exampleModal"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title text-dark" id="exampleModalLabel">
+                    Login
+                  </h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div className="modal-body text-dark">
+                  {store.token &&
+                  store.token != "" &&
+                  store.token != undefined ? (
+                    "Successful Log In"
+                  ) : (
+                    <Login />
+                  )}
                 </div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </nav>
