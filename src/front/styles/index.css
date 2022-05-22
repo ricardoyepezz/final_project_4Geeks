@@ -86,9 +86,13 @@ text-align:end
 
 .noticias {
   padding-top:5px;
-  color:rgb(255, 255, 255);
-  background-image: url("../img/Noticias1.jpg");}
+  color:rgb(22, 21, 21);
+  background-color: black;
+  border-radius: 5%;
+}
 
 .noticias > h1 {
 text-align:center;
+color:lightgoldenrodyellow
 }
+

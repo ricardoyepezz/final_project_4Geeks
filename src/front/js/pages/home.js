@@ -72,6 +72,7 @@ export const Home = () => {
             </div>
             <div className="p-4"></div>
             <div className="noticias">
+            <h1>Noticias</h1>
           <Noticias/><Noticias/><Noticias/></div>
           </div>
           <div className="col-2"></div>
