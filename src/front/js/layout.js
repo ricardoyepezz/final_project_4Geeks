@@ -11,8 +11,6 @@ import { Comedia } from "./pages/comedia";
 import { Drama } from "./pages/drama";
 import { Romance } from "./pages/romance";
 import { Terror } from "./pages/terror";
-import { Menuperfil } from "./component/menuperfil.js";
-import { Sidebar } from "./component/sidebar.js";
 import { Perfil } from "./pages/perfil";
 import {Favoritos} from "./pages/favoritos";
 
@@ -56,7 +54,7 @@ const Layout = () => {
             <Route exact path="/perfil/:menu">
               <Perfil />
             </Route>
-            <Route exact path="/favoritos/:id">
+            <Route exact path="/favoritos/">
               <Favoritos />
             </Route>
             <Route exact path="/single/:theid">

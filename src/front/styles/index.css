@@ -1,3 +1,6 @@
+.body { 
+  padding-top: 70px; }
+  
 .cuerpo {
   background-color: black;
 }
@@ -13,6 +16,14 @@
   float: right;
   font-size: large;
 }
+
+.sidebar >a:hover {color: violet;}
+.sidebar >a:active {background:grey;}
+.sidebar >a {
+  color:azure;
+}
+
+
 
 .SideTitle {
   border: yellow 5px dotted;

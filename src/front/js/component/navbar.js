@@ -11,11 +11,65 @@ export const Navbar = () => {
   return (
     <>
       {/*--------------- first Navbar----------------------- */}
-      <div className="up-navbar col-12 d-lg-block">
-        <img className="logo" src={Popcorn} />
-        oviez
-        <div className="login d-inline-block">
-          {/*  ---------------sign-up button ----------------- */}
+
+
+
+        {/*--------------- second Navbar----------------------- */}
+      <nav className="navbar navbar-expand-lg navbar-light bg-dark">
+          <div className="container-fluid">
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <a
+                    className="nav-link text-light"
+                    aria-current="home"
+                    href="/"
+                  >
+                    Inicio
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link text-light" href="/animacion">
+                    Animación
+                  </a>
+                </li>
+
+                <li className="nav-item">
+                  <a className="nav-link text-light" href="/comedia">
+                    Comedia
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link text-light" href="/drama">
+                    Drama
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link text-light" href="/Romance">
+                    Romance
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link text-light" href="/Terror">
+                    Terror
+                  </a>
+                </li>
+              </ul>
+              <form className="d-flex">
+                <input
+                  className="form-control me-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+                <button className="btn btn-outline-success" type="submit">
+                  🔎
+                </button>
+              </form>
+                        {/*  ---------------sign-up button ----------------- */}
 
           <div className="p-2 bd-highlight">
             <a
@@ -73,66 +127,9 @@ export const Navbar = () => {
               </div>
             </div>
           </div>
-        </div>
-        {/*--------------- second Navbar----------------------- */}
-        <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-          <div className="container-fluid">
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent"
-            >
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <a
-                    className="nav-link text-light"
-                    aria-current="home"
-                    href="/"
-                  >
-                    Inicio
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="/animacion">
-                    Animación
-                  </a>
-                </li>
-
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="/comedia">
-                    Comedia
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="/drama">
-                    Drama
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="/Romance">
-                    Romance
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="/Terror">
-                    Terror
-                  </a>
-                </li>
-              </ul>
-              <form className="d-flex">
-                <input
-                  className="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button className="btn btn-outline-success" type="submit">
-                  🔎
-                </button>
-              </form>
             </div>
           </div>
         </nav>
-      </div>
     </>
   );
 };
