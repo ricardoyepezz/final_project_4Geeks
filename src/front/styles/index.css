@@ -1,6 +1,6 @@
 .navbar {
   background-color:black;
-  opacity:90%;
+  opacity:80%;
   border:gray;
 }
 
@@ -65,11 +65,6 @@
   height: auto;
 }
 
-.logo {
-  height: 45px;
-  width: 45px;
-}
-
 .recomendadas {
 background-image: url("https://img.freepik.com/vector-gratis/tira-carrete-pelicula-hecha-destellos-dorados_1017-36801.jpg?t=st=1652397729~exp=1652398329~hmac=12ebeead47bc55d57b188c19aaa8d28ad6df209b018654379d0f94f18e0a5002&w=1060");
 color:rgb(255, 255, 255);
@@ -84,3 +79,16 @@ text-align:end
   border-style: ridge;
 }
 
+.card-img-top{
+  height:250px;
+  width:200px;
+}
+
+.noticias {
+  padding-top:5px;
+  color:rgb(255, 255, 255);
+  background-image: url("../img/Noticias1.jpg");}
+
+.noticias > h1 {
+text-align:center;
+}

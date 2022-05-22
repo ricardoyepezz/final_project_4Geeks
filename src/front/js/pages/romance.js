@@ -5,7 +5,7 @@ import { useEffect } from "react";
 export const Romance = () => {
   return (
     <>
-      <div className="row container-fluid col-12">
+      <div className="cuerpo row container-fluid col-12">
         <div
           id="carouselExampleFade"
           className="carousel slide carousel-fade w-50 col-8"

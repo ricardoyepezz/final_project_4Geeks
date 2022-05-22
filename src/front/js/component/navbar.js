@@ -11,7 +11,7 @@ export const Navbar = () => {
     <>
 
       {/*--------------- second Navbar----------------------- */}
-      <nav className="navbar fixed-top navbar-expand-lg navbar-light">
+      <nav className="navbar fixed-top navbar-expand-lg navbar-light border-bottom border-warning">
         <div className="container-fluid">
           <div className="movlogo"><img src={Movlogo}/></div>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">

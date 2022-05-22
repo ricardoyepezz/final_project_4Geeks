@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { useEffect } from "react";
 import { Form } from "../component/form";
+import {Noticias} from "../component/noticias";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -17,93 +18,72 @@ export const Home = () => {
       <div className="cuerpo container-fluid">
         <div className="alert">{store.message}</div>
         <div className="row container-fluid col-12">
-        <div
-          id="carouselExampleFade"
-          className="carousel slide carousel-fade w-50"
-          data-bs-ride="carousel"
-        >
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img
-                src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/480/public/media/image/2021/11/avatar-2520685.jpg?itok=-Znp5ZFb"
-                className="d-block w-100"
-                alt="..."
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                src="https://i.ytimg.com/vi/_40CDeU_BwI/maxresdefault.jpg"
-                className="d-block w-100"
-                alt="..."
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                src="https://i.ytimg.com/vi/gn1pz0rnNHs/maxresdefault.jpg"
-                className="d-block w-100"
-                alt="..."
-              />
-            </div>
-            <button
-            className="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleFade"
-            data-bs-slide="prev"
+          <div
+            id="carouselExampleFade"
+            className="carousel slide carousel-fade w-50"
+            data-bs-ride="carousel"
           >
-            <span
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button
-            className="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleFade"
-            data-bs-slide="next"
-          >
-            <span
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-            <span className="visually-hidden">Next</span>
-          </button>
-          </div>
-
-          <div className="recomendadas card text-start mt-5">
-            <div className="card-body">
-              <h5 className="card-title ">🍿Noticias y Estrenos🍿</h5>
-              <div>
-                <p className="card-text">
-                <img className="cardPic" src="https://vader.news/__export/1589127555217/sites/gadgets/img/2020/05/10/avatar-2-baby.jpg_672404822.jpg"/>
-                With supporting text below as a natural lead-in to additional
-                content.
-              </p>
-              <a href="#" className="btn btn-dark">
-                Ver más➜...
-              </a></div>
-
-              <span></span>
-
-              <div><p className="card-text">
-                <img className="cardPic" src="https://i.ytimg.com/vi/1lZuVNZyukU/maxresdefault.jpg"/>
-                With supporting text below as a natural lead-in to additional
-                content.
-              </p>
-              <a href="#" className="btn btn-dark">
-                Ver más➜...
-              </a></div>
+            <div className="carousel-inner">
+              <div className="carousel-item active">
+                <img
+                  src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/480/public/media/image/2021/11/avatar-2520685.jpg?itok=-Znp5ZFb"
+                  className="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <div className="carousel-item">
+                <img
+                  src="https://i.ytimg.com/vi/_40CDeU_BwI/maxresdefault.jpg"
+                  className="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <div className="carousel-item">
+                <img
+                  src="https://i.ytimg.com/vi/gn1pz0rnNHs/maxresdefault.jpg"
+                  className="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <button
+                className="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselExampleFade"
+                data-bs-slide="prev"
+              >
+                <span
+                  className="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span className="visually-hidden">Previous</span>
+              </button>
+              <button
+                className="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExampleFade"
+                data-bs-slide="next"
+              >
+                <span
+                  className="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span className="visually-hidden">Next</span>
+              </button>
             </div>
+            <div className="p-4"></div>
+            <div className="noticias">
+          <Noticias/><Noticias/><Noticias/></div>
           </div>
-        </div>
-        <div className="col-2"></div>
-
+          <div className="col-2"></div>
           <div className=" SideRight row col-4">
             <div className="SideTitle">Top 5</div>
             <div className="card col-6 mx-auto d-block">
               <h5 className="card-title">Special title treatment</h5>
               <div className="img1 mx-auto">
-                <img className="imgside col-6"src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU" />
+                <img
+                  className="imgside col-6"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU"
+                />
               </div>
               <div className="card-body col-12">
                 <p className="card-text">
@@ -121,7 +101,10 @@ export const Home = () => {
             <div className="card col-6 mx-auto d-block">
               <h5 className="card-title">Special title treatment</h5>
               <div className="img1">
-                <img className="imgside col-6" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU" />
+                <img
+                  className="imgside col-6"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU"
+                />
               </div>
               <div className="card-body col-12">
                 <p className="card-text">
@@ -138,7 +121,10 @@ export const Home = () => {
             <div className="card col-6 mx-auto d-block">
               <h5 className="card-title">Special title treatment</h5>
               <div className="img1">
-                <img className="imgside col-6" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU" />
+                <img
+                  className="imgside col-6"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU"
+                />
               </div>
               <div className="card-body col-12">
                 <p className="card-text">
@@ -154,7 +140,10 @@ export const Home = () => {
             <div className="card col-6 mx-auto d-block">
               <h5 className="card-title">Special title treatment</h5>
               <div className="img1">
-                <img className="imgside col-6" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU" />
+                <img
+                  className="imgside col-6"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU"
+                />
               </div>
               <div className="card-body col-12">
                 <p className="card-text">
@@ -167,8 +156,8 @@ export const Home = () => {
               </div>
             </div>
           </div>{" "}
+        </div>
       </div>
-      </div>
-      </>
+    </>
   );
 };

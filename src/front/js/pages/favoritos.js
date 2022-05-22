@@ -10,8 +10,9 @@ export const Favoritos = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <>
-    <div><Sidebar/></div>   
+    <> <div className="cuerpo">
+    <div><Sidebar/></div>  
+    </div> 
     </>
   );
 }
