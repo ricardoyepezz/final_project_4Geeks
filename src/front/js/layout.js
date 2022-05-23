@@ -13,7 +13,7 @@ import { Romance } from "./pages/romance";
 import { Terror } from "./pages/terror";
 import { Perfil } from "./pages/perfil";
 import {Favoritos} from "./pages/favoritos";
-import {MiLista} from "./component/milista";
+import {Lista} from "./pages/lista";
 import { Configuracion } from "./pages/configuracion";
 
 
@@ -60,7 +60,7 @@ const Layout = () => {
               <Favoritos />
             </Route>
             <Route exact path="/milista/">
-              <MiLista />
+              <Lista />
             </Route>
             <Route exact path="/configuracion/">
               <Configuracion />
