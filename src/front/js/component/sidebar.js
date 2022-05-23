@@ -1,10 +1,7 @@
-import React, { useContext } from "react";
-import { Context } from "../store/appContext";
+import React from "react";
 import "../../styles/home.css";
 
 export const Sidebar = () => {
-  const { store } = useContext(Context);
-
   return (
     <div className="sidebar container-fluid">
       <div className=" flex-nowrap">
@@ -22,24 +19,28 @@ export const Sidebar = () => {
               href="/favoritos"
               className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none"
             >
-              <span className="text-warning fs-5 d-none d-sm-inline">Favoritos</span>
+              <span className="text-warning fs-5 d-none d-sm-inline">
+                Favoritos
+              </span>
             </a>
             <a
               href="/milista"
               className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none"
             >
-              <span className="text-warning fs-5 d-none d-sm-inline">Mi Lista</span>
+              <span className="text-warning fs-5 d-none d-sm-inline">
+                Mi Lista
+              </span>
             </a>
             <a
               href="/perfil"
               className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none"
             >
-              <span className="text-warning fs-5 d-none d-sm-inline">Configuración</span>
+              <span className="text-warning fs-5 d-none d-sm-inline">
+                Configuración
+              </span>
             </a>
           </div>
         </div>
-
- 
       </div>
     </div>
   );

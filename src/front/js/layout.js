@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
 import { Form } from "./component/form";
+import { Login } from "./component/login";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
@@ -12,10 +13,9 @@ import { Drama } from "./pages/drama";
 import { Romance } from "./pages/romance";
 import { Terror } from "./pages/terror";
 import { Perfil } from "./pages/perfil";
-import {Favoritos} from "./pages/favoritos";
-import {Lista} from "./pages/lista";
+import { Favoritos } from "./pages/favoritos";
+import { Lista } from "./pages/lista";
 import { Configuracion } from "./pages/configuracion";
-
 
 //create your first component
 const Layout = () => {
@@ -34,6 +34,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/signup">
               <Form />
+            </Route>
+            <Route exact path="/login">
+              <Login />
             </Route>
             <Route exact path="/animacion">
               <Animacion />

@@ -1,10 +1,9 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
-      accepted: false,
       token: null,
       message: null,
-      url: "https://3001-ricardoyepe-finalprojec-sm1lpipnufx.ws-us45.gitpod.io",
+      url: "https://3001-ricardoyepe-finalprojec-f8ljzha88gx.ws-us45.gitpod.io",
       original_title: {},
       poster_path: {},
       favoritos: [],
@@ -15,10 +14,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       logout: (history) => {
         localStorage.removeItem("token");
         history.push("/");
-        console.log("Login out");
+        console.log("Login out successful");
         setStore({ token: null });
         setStore({ message: null });
-        setStore({ accepted: false });
       },
 
       /////////////////////////////////////// function to register new users
@@ -31,7 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         })
           .then((response) => response.json())
           .then((data) => {
-            console.log("FLUX DATA", data);
+            console.log("Data From Flux", data);
             localStorage.setItem("token", JSON.stringify(data));
             setStore({ register: data });
             history.push("/");
@@ -43,6 +41,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       login: (formData, history) => {
         const { url } = getStore();
+        let token = localStorage.getItem("token");
 
         fetch(`${url}/api/token`, {
           method: "POST",
@@ -50,10 +49,11 @@ const getState = ({ getStore, getActions, setStore }) => {
         })
           .then((response) => response.json())
           .then((data) => {
-            localStorage.setItem("token", JSON.stringify(data));
-            history.push("/perfil");
             setStore({ token: data });
-            setStore({ accepted: true });
+            localStorage.setItem("token", JSON.stringify(data));
+            {
+              token ? history.push("/perfil") : history.push("/login");
+            }
           })
           .catch((error) => console.log("Login Error", error));
       },
@@ -80,7 +80,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((result) => console.log(result))
           .catch((error) => console.log("error", error));
       },
-      
 
       /////////////////////////////////////// Function add favorites
 

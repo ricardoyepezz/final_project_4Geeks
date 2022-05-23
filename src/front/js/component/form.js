@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 export const Form = () => {
   const { actions } = useContext(Context);
 
-  let allGood = false;
+  let flag = false;
 
   const [registerForm, setRegisterForm] = useState({
     name: "",
@@ -30,31 +30,31 @@ export const Form = () => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (!registerForm.name) {
       errors.name = "Name is required!";
-      allGood = true;
+      flag = true;
     }
     if (!registerForm.email) {
       errors.email = "Email is required!";
-      allGood = true;
+      flag = true;
     } else if (!regex.test(registerForm.email)) {
       errors.email = "Email not valid!";
     }
     if (!registerForm.password) {
       errors.password = "Password is required!";
-      allGood = true;
+      flag = true;
     }
     return errors;
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     setRegisterErrors(handleValidate(registerForm));
-    if (allGood === false) {
+    if (flag === false) {
       let formData = new FormData();
       formData.append("name", registerForm.name);
       formData.append("email", registerForm.email);
       formData.append("password", registerForm.password);
       actions.signup(formData, history);
       e.target.reset();
-      allGood = true;
+      flag = true;
     } else return false;
   };
 
@@ -107,7 +107,7 @@ export const Form = () => {
             <p className="errors-signup">{registerErrors.password}</p>
             <button
               type="submit"
-              className="btn btn-signup d-grid gap-2 col-6 mx-auto"
+              className="btn btn-dark d-grid gap-2 col-6 mx-auto"
             >
               Sign up
             </button>
