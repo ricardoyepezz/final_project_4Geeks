@@ -1,10 +1,12 @@
+import axios from "axios";
+
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       token: null,
       message: null,
       url: "https://3001-ricardoyepe-finalprojec-f8ljzha88gx.ws-us45.gitpod.io",
-      original_title: {},
+      titles: {},
       poster_path: {},
       favoritos: [],
     },
@@ -60,14 +62,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       /////////////////////////////////////// Function get titles
 
-      getTitles: () => {
-        fetch("https://api.themoviedb.org/3/movie/")
+      getMovies: () => {
+        fetch(
+          "https://api.themoviedb.org/3/discover/movie?api_key=c7e441d69782b0348dfb84193c8a5371&language=es-ES&page=1"
+        )
           .then((res) => res.json())
+          // actualizamos estado de store.people en donde obtenemos que data (proveniente de la api) se cargará en el objeto people
           .then((data) => {
-            setStore({ original_title: data });
+            setStore({ titles: data });
           })
           .catch((err) => console.error(err));
       },
+      /* const endPoint =
+          "https://api.themoviedb.org/3/discover/movie?api_key=c7e441d69782b0348dfb84193c8a5371&language=es-ES&page=1";
+        axios.get(endPoint).then((response) => {
+          const apiData = response.data;
+          setStore({ titles: apiData.results });
+        });
+      }, */
 
       /////////////////////////////////////// Function get posters
 

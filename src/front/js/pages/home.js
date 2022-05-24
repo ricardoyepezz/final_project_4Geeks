@@ -2,163 +2,40 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { useEffect } from "react";
-import { Form } from "../component/form";
-import {Noticias} from "../component/noticias";
+import { Noticias } from "../component/noticias";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
-    if (store.token && store.token != "" && store.token != undefined)
-      actions.getMessage();
-  }, [store.token]);
+    actions.getMovies();
+    console.log(store.titles);
+  }, []);
 
   return (
-    <>
-      <div className=" cuerpohome col-12">
-        <div className="alert">{store.message}</div>
-        <div className="cuerpohome row ">
-          <div
-            id="carouselExampleFade"
-            className="carousel slide carousel-fade w-50"
-            data-bs-ride="carousel"
-          >
-            <div className="carousel-inner">
-              <div className="carousel-item active">
+    <div className="row">
+      <div className="cuerpo row">
+        {store.titles?.results?.slice(0, 18).map((oneMovie, index) => {
+          return (
+            <div key={index} className="col-2 text-center p-1">
+              <div className="card">
                 <img
-                  src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/480/public/media/image/2021/11/avatar-2520685.jpg?itok=-Znp5ZFb"
-                  className="d-block w-100"
+                  src={`https://image.tmdb.org/t/p/w500/${oneMovie.poster_path}`}
+                  className="card-img-top"
                   alt="..."
                 />
-              </div>
-              <div className="carousel-item">
-                <img
-                  src="https://i.ytimg.com/vi/_40CDeU_BwI/maxresdefault.jpg"
-                  className="d-block w-100"
-                  alt="..."
-                />
-              </div>
-              <div className="carousel-item">
-                <img
-                  src="https://i.ytimg.com/vi/gn1pz0rnNHs/maxresdefault.jpg"
-                  className="d-block w-100"
-                  alt="..."
-                />
-              </div>
-              <button
-                className="carousel-control-prev"
-                type="button"
-                data-bs-target="#carouselExampleFade"
-                data-bs-slide="prev"
-              >
-                <span
-                  className="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Previous</span>
-              </button>
-              <button
-                className="carousel-control-next"
-                type="button"
-                data-bs-target="#carouselExampleFade"
-                data-bs-slide="next"
-              >
-                <span
-                  className="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Next</span>
-              </button>
-            </div>
-            <div className="p-4"></div>
-            <div className="noticias">
-            <h1>Noticias</h1>
-          <Noticias/><Noticias/><Noticias/></div>
-          </div>
-          <div className="col-2"></div>
-          <div className=" SideRight row col-4">
-            <div className="SideTitle">Top 5</div>
-            <div className="card col-6 mx-auto d-block">
-              <h5 className="card-title">Special title treatment</h5>
-              <div className="img1 mx-auto">
-                <img
-                  className="imgside col-6"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU"
-                />
-              </div>
-              <div className="card-body col-12">
-                <p className="card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-                <a href="#" className="btn btn-primary">
-                  Go somewhere
-                </a>
+                <div className="card-body">
+                  <h5 className="card-title">{oneMovie.title}</h5>
+                  {/* <p className="card-text">{oneMovie.overview}</p> */}
+                </div>
+                <div className="card-footer">
+                  <small className="text-muted">Last updated 3 mins ago</small>
+                </div>
               </div>
             </div>
-
-            <span></span>
-
-            <div className="card col-6 mx-auto d-block">
-              <h5 className="card-title">Special title treatment</h5>
-              <div className="img1">
-                <img
-                  className="imgside col-6"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU"
-                />
-              </div>
-              <div className="card-body col-12">
-                <p className="card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-                <a href="#" className="btn btn-primary">
-                  Go somewhere
-                </a>
-              </div>
-            </div>
-
-            <span></span>
-            <div className="card col-6 mx-auto d-block">
-              <h5 className="card-title">Special title treatment</h5>
-              <div className="img1">
-                <img
-                  className="imgside col-6"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU"
-                />
-              </div>
-              <div className="card-body col-12">
-                <p className="card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-                <a href="#" className="btn btn-primary">
-                  Go somewhere
-                </a>
-              </div>
-            </div>
-            <span></span>
-            <div className="card col-6 mx-auto d-block">
-              <h5 className="card-title">Special title treatment</h5>
-              <div className="img1">
-                <img
-                  className="imgside col-6"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrdRTK-TP57tC8-Qkn-fLxEsfjDk7pkCtCZA&usqp=CAU"
-                />
-              </div>
-              <div className="card-body col-12">
-                <p className="card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-                <a href="#" className="btn btn-primary">
-                  Go somewhere
-                </a>
-              </div>
-            </div>
-          </div>{" "}
-        </div>
+          );
+        })}
       </div>
-    </>
+    </div>
   );
 };
