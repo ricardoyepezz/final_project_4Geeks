@@ -7,6 +7,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       message: null,
       url: "https://3001-ricardoyepe-finalprojec-f8ljzha88gx.ws-us45.gitpod.io",
       titles: {},
+      animationTitles: {},
+      comedyTitles: {},
+      dramaTitles: {},
+      romanceTitles: {},
+      horrorTitles: {},
       poster_path: {},
       favoritos: [],
     },
@@ -67,19 +72,75 @@ const getState = ({ getStore, getActions, setStore }) => {
           "https://api.themoviedb.org/3/discover/movie?api_key=c7e441d69782b0348dfb84193c8a5371&language=es-ES&page=1"
         )
           .then((res) => res.json())
-          // actualizamos estado de store.people en donde obtenemos que data (proveniente de la api) se cargará en el objeto people
           .then((data) => {
             setStore({ titles: data });
           })
           .catch((err) => console.error(err));
       },
-      /* const endPoint =
-          "https://api.themoviedb.org/3/discover/movie?api_key=c7e441d69782b0348dfb84193c8a5371&language=es-ES&page=1";
-        axios.get(endPoint).then((response) => {
-          const apiData = response.data;
-          setStore({ titles: apiData.results });
-        });
-      }, */
+      /////////////////////////////////////// Function get animation titles
+
+      getAnimationTitles: () => {
+        fetch(
+          "https://api.themoviedb.org/3/discover/movie?api_key=c7e441d69782b0348dfb84193c8a5371&with_genres=16"
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            setStore({ animationTitles: data });
+          })
+          .catch((err) => console.error(err));
+      },
+
+      /////////////////////////////////////// Function get comedy titles
+
+      getComedyTitles: () => {
+        fetch(
+          "https://api.themoviedb.org/3/discover/movie?api_key=c7e441d69782b0348dfb84193c8a5371&with_genres=35"
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            setStore({ comedyTitles: data });
+          })
+          .catch((err) => console.error(err));
+      },
+
+      /////////////////////////////////////// Function get drama titles
+
+      getDramaTitles: () => {
+        fetch(
+          "https://api.themoviedb.org/3/discover/movie?api_key=c7e441d69782b0348dfb84193c8a5371&with_genres=18"
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            setStore({ dramaTitles: data });
+          })
+          .catch((err) => console.error(err));
+      },
+
+      /////////////////////////////////////// Function get romance titles
+
+      getRomanceTitles: () => {
+        fetch(
+          "https://api.themoviedb.org/3/discover/movie?api_key=c7e441d69782b0348dfb84193c8a5371&with_genres=10749"
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            setStore({ romanceTitles: data });
+          })
+          .catch((err) => console.error(err));
+      },
+
+      /////////////////////////////////////// Function get horror titles
+
+      getHorrorTitles: () => {
+        fetch(
+          "https://api.themoviedb.org/3/discover/movie?api_key=c7e441d69782b0348dfb84193c8a5371&with_genres=27"
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            setStore({ horrorTitles: data });
+          })
+          .catch((err) => console.error(err));
+      },
 
       /////////////////////////////////////// Function get posters
 
