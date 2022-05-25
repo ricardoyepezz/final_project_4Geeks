@@ -16,9 +16,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       poster_path: {},
       favoritos: [],
     },
-    actions: {
-      /////////////////////////////////////// Function for user logout
 
+    /////////////////////////////////////// Function for user logout
+    actions: {
       logout: (history) => {
         localStorage.removeItem("token");
         history.push("/");
@@ -143,28 +143,10 @@ const getState = ({ getStore, getActions, setStore }) => {
           .catch((err) => console.error(err));
       },
 
-      /////////////////////////////////////// Function get posters
-
-      getPoster: () => {
-        fetch(
-          "https://api.themoviedb.org/3/movie/3/images?api_key=80f219d75335ab45f63896f726188fb5&language=en-US",
-          requestOptions
-        )
-          .then((response) => response.text())
-          .then((result) => console.log(result))
-          .catch((error) => console.log("error", error));
-      },
-
       /////////////////////////////////////// Function add favorites
 
-      addFavorites: (newFavorite) => {
-        const { favorites } = getStore();
-        const fav = favorites.some((item) => item === newFavorite);
-        if (fav === true) {
-          return;
-        } else {
-          setStore(favorites.push(newFavorite));
-        }
+      addFavorites: () => {
+        console.log("funciona ok");
       },
     },
 

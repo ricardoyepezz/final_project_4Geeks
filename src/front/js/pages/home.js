@@ -24,6 +24,9 @@ export const Home = () => {
                   className="card-img-top"
                   alt="..."
                 />
+                <button className="favorite-btn" onClick={actions.addFavorites}>
+                  🖤
+                </button>
                 <div className="card-body">
                   <h5 className="card-title">{oneMovie.title}</h5>
                   {/* <p className="card-text">{oneMovie.overview}</p> */}
