@@ -12,6 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       dramaTitles: {},
       romanceTitles: {},
       horrorTitles: {},
+      searchResults: {},
       poster_path: {},
       favoritos: [],
     },

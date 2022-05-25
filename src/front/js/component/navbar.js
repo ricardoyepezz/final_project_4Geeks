@@ -1,6 +1,7 @@
 import React from "react";
 import { Menuperfil } from "/workspace/final_project_4Geeks/src/front/js/component/menuperfil.js";
 import Movlogo from "../../img/Movlogo.png";
+import { Buscador } from "./Buscador";
 
 export const Navbar = () => {
   let token = localStorage.getItem("token");
@@ -46,17 +47,7 @@ export const Navbar = () => {
                 </a>
               </li>
             </ul>
-            <form className="d-flex">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-warning" type="submit">
-                🔎
-              </button>
-            </form>
+            <Buscador />
             {!token ? (
               <div className="p-2 bd-highlight">
                 <a
