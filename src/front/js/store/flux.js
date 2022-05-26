@@ -7,6 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       message: null,
       url: "https://3001-ricardoyepe-finalprojec-f8ljzha88gx.ws-us45.gitpod.io",
       titles: {},
+      titleDetail: {},
       animationTitles: {},
       comedyTitles: {},
       dramaTitles: {},
@@ -75,6 +76,19 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((res) => res.json())
           .then((data) => {
             setStore({ titles: data });
+          })
+          .catch((err) => console.error(err));
+      },
+
+      /////////////////////////////////////// Function get titles detail
+
+      getTitleDetail: (id) => {
+        fetch(
+          `https://api.themoviedb.org/3/movie/${id}?api_key=c7e441d69782b0348dfb84193c8a5371&language=en-US`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            setStore({ titleDetail: data });
           })
           .catch((err) => console.error(err));
       },

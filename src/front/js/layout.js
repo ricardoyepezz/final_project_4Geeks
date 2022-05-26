@@ -16,8 +16,9 @@ import { Perfil } from "./pages/perfil";
 import { Favoritos } from "./pages/favoritos";
 import { Lista } from "./pages/lista";
 import { Results } from "./component/Results";
-import {Editar} from "./pages/editardatos";
-import {Configuracion} from "./pages/configuracion";;
+import { Editar } from "./pages/editardatos";
+import { Configuracion } from "./pages/configuracion";
+import { Detail } from "./pages/Detail";
 
 //create your first component
 const Layout = () => {
@@ -42,6 +43,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/results">
               <Results />
+            </Route>
+            <Route exact path="/detail/:id">
+              <Detail />
             </Route>
             <Route exact path="/animacion">
               <Animacion />
