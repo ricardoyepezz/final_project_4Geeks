@@ -7,6 +7,7 @@ import { Noticias } from "../component/noticias";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
+  let token = localStorage.getItem("token");
 
   useEffect(() => {
     actions.getMovies();
@@ -27,9 +28,18 @@ export const Home = () => {
                     alt="..."
                   />
                 </div>
-                <button className="favorite-btn" onClick={actions.addFavorites}>
-                  🖤
-                </button>
+                {token ? (
+                  <button
+                    className="favorite-btn"
+                    onClick={() => {
+                      actions.addFavorites(oneMovie.title);
+                    }}
+                  >
+                    🖤
+                  </button>
+                ) : (
+                  ""
+                )}
                 <Link to={"detail/" + oneMovie.id}>
                   <button className="detail-btn">✖️</button>
                 </Link>

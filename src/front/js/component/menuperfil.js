@@ -6,12 +6,9 @@ import "../../styles/home.css";
 export const Menuperfil = () => {
   const { store, actions } = useContext(Context);
   const history = useHistory();
-  let token = localStorage.getItem("token");
 
   return (
     <>
-      {!token && <Redirect to="/" />}
-
       <div className="dropdown">
         <button
           className="btn btn-secondary dropdown-toggle"
@@ -29,9 +26,6 @@ export const Menuperfil = () => {
           </a>
           <a className="dropdown-item" href="/favoritos">
             Mis favoritos
-          </a>
-          <a className="dropdown-item" href="/milista">
-            Mi lista
           </a>
           <div className="dropdown-divider"></div>
           <a className="dropdown-item" onClick={() => actions.logout(history)}>

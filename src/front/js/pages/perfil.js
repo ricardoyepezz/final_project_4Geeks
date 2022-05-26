@@ -9,7 +9,7 @@ export const Perfil = () => {
 
   return (
     <>
-      {!token && <Redirect to="/" />}
+      {token ? <Redirect to="/perfil" /> : <Redirect to="/login" />}
       <div className="perfil pt-12">
         <div className="col-2">
           {" "}

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 export const Drama = () => {
   const { store, actions } = useContext(Context);
+  let token = localStorage.getItem("token");
 
   useEffect(() => {
     actions.getDramaTitles();
@@ -25,9 +26,16 @@ export const Drama = () => {
                     alt="..."
                   />
                 </div>
-                <button className="favorite-btn" onClick={actions.addFavorites}>
-                  🖤
-                </button>
+                {token ? (
+                  <button
+                    className="favorite-btn"
+                    onClick={actions.addFavorites}
+                  >
+                    🖤
+                  </button>
+                ) : (
+                  ""
+                )}
                 <Link to={"detail/" + oneMovie.id}>
                   <button className="detail-btn">✖️</button>
                 </Link>

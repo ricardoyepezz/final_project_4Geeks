@@ -1,20 +1,26 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
-import { useEffect } from "react";
-import { Home } from "/workspace/final_project_4Geeks/src/front/js/pages/home.js";
-import { Menuperfil } from "/workspace/final_project_4Geeks/src/front/js/component/menuperfil.js";
-import { Sidebar } from "/workspace/final_project_4Geeks/src/front/js/component/sidebar.js";
-import { Datos } from "/workspace/final_project_4Geeks/src/front/js/component/datos.js";
-import { MisFavoritos } from "../component/misfavoritos.js";
+import { Sidebar } from "../component/sidebar";
 
 export const Favoritos = () => {
-
+  const { store, actions } = useContext(Context);
+  console.log(store.favorites);
   return (
- 
-      <div className="perfil pt-12">
-       <div className="col-2"> <Sidebar /></div>
-     <div className="favoritos col-10"> <MisFavoritos/>
+    <div className="perfil pt-12">
+      <div className="col-2">
+        <Sidebar />
+      </div>
+      <div className="favoritos col-10">
+        <span className="badge bg-secondary">{store.favorites.length}</span>
+
+        {store.favorites.map((oneMovie, index) => {
+          return (
+            <div key={index} className="d-flex text-light">
+              {oneMovie.title}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

@@ -1,11 +1,9 @@
-import axios from "axios";
-
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       token: null,
       message: null,
-      url: "https://3001-ricardoyepe-finalprojec-f8ljzha88gx.ws-us45.gitpod.io",
+      url: "https://3001-ricardoyepe-finalprojec-tz9m7u5f1xd.ws-us46.gitpod.io",
       titles: {},
       titleDetail: {},
       animationTitles: {},
@@ -15,7 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       horrorTitles: {},
       searchResults: {},
       poster_path: {},
-      favoritos: [],
+      favorites: [],
     },
 
     /////////////////////////////////////// Function for user logout
@@ -159,17 +157,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       /////////////////////////////////////// Function add favorites
 
-      addFavorites: () => {
-        console.log("funciona ok");
+      addFavorites: (newFavorite) => {
+        const { favorites } = getStore();
+        const fav = favorites.some((item) => item === newFavorite);
+        if (fav === true) {
+          return;
+        } else {
+          setStore(favorites.push(newFavorite));
+        }
+        console.log("fav added");
       },
-    },
 
-    /////////////////////////////////////// Function remove favorites
+      /////////////////////////////////////// Function remove favorites
 
-    removeFavorites: (index) => {
-      const { favorites } = getStore();
-      favorites.splice(index, 1);
-      setStore(...favorites);
+      removeFavorites: (index) => {
+        const { favorites } = getStore();
+        favorites.splice(index, 1);
+        setStore(...favorites);
+      },
     },
   };
 };
