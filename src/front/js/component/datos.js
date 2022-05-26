@@ -52,6 +52,7 @@ export const Datos = () => {
     </tr>
   </tbody>
 </table>
+<a href="https://3000-ricardoyepe-finalprojec-m0rqhmygarb.ws-us46.gitpod.io/editar">Editar</a>
     </div>
   );
 };

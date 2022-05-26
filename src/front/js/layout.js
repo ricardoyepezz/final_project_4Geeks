@@ -15,8 +15,9 @@ import { Terror } from "./pages/terror";
 import { Perfil } from "./pages/perfil";
 import { Favoritos } from "./pages/favoritos";
 import { Lista } from "./pages/lista";
-import { Configuracion } from "./pages/configuracion";
 import { Results } from "./component/Results";
+import {Editar} from "./pages/editardatos";
+import {Configuracion} from "./pages/configuracion";;
 
 //create your first component
 const Layout = () => {
@@ -71,6 +72,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/configuracion/">
               <Configuracion />
+            </Route>
+            <Route exact path="/editar/">
+              <Editar />
             </Route>
             <Route exact path="/single/:theid">
               <Single />
