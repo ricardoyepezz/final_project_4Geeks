@@ -32,9 +32,9 @@ export const Home = () => {
                   <h5 className="card-title">{oneMovie.title}</h5>
                   {/* <p className="card-text">{oneMovie.overview}</p> */}
                 </div>
-                <div className="card-footer">
+                {/* <div className="card-footer">
                   <small className="text-muted">Last updated 3 mins ago</small>
-                </div>
+                </div> */}
               </div>
             </button>
               {/* componente del modal */}
@@ -43,11 +43,14 @@ export const Home = () => {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">{oneMovie.title}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+       <div className="modal_text">
+         <p className="card-text">{oneMovie.overview}</p>
+
+       </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
