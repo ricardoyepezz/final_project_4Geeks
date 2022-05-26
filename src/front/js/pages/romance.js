@@ -29,7 +29,7 @@ export const Romance = () => {
                 {token ? (
                   <button
                     className="favorite-btn"
-                    onClick={actions.addFavorites}
+                    onClick={actions.addFavorites(oneMovie.title)}
                   >
                     🖤
                   </button>

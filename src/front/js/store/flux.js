@@ -160,12 +160,12 @@ const getState = ({ getStore, getActions, setStore }) => {
       addFavorites: (newFavorite) => {
         const { favorites } = getStore();
         const fav = favorites.some((item) => item === newFavorite);
+        //localStorage.setItem("movies", fav);
         if (fav === true) {
           return;
         } else {
           setStore(favorites.push(newFavorite));
         }
-        console.log("fav added");
       },
 
       /////////////////////////////////////// Function remove favorites
@@ -174,6 +174,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const { favorites } = getStore();
         favorites.splice(index, 1);
         setStore(...favorites);
+        //localStorage.removeItem("movies");
       },
     },
   };

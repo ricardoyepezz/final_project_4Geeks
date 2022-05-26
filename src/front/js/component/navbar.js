@@ -2,6 +2,7 @@ import React from "react";
 import { Menuperfil } from "/workspace/final_project_4Geeks/src/front/js/component/menuperfil.js";
 import Movlogo from "../../img/Movlogo.png";
 import { Buscador } from "./Buscador";
+import { Favoritos } from "../pages/favoritos";
 
 export const Navbar = () => {
   let token = localStorage.getItem("token");
@@ -46,6 +47,13 @@ export const Navbar = () => {
                   Terror
                 </a>
               </li>
+              {token ? (
+                <li className="nav-item">
+                  <Favoritos />
+                </li>
+              ) : (
+                ""
+              )}
             </ul>
             <Buscador />
             {!token ? (

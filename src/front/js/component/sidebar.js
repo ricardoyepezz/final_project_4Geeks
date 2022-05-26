@@ -20,14 +20,14 @@ export const Sidebar = () => {
                   Mi Perfil
                 </span>
               </a>
-              <a
+              {/* <a
                 href="/favoritos"
                 className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none"
               >
                 <span className="text-warning fs-5 d-none d-sm-inline">
                   Favoritos
                 </span>
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
