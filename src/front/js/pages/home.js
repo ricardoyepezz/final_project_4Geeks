@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import "../../styles/home.css";
+import "../../styles/detail.css";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Noticias } from "../component/noticias";

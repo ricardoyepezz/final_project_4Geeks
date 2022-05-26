@@ -11,27 +11,36 @@ export const Detail = () => {
     actions.getTitleDetail(id);
   }, []);
   return (
-    <div className="row">
-      <div className="cuerpo row">
-        <div className="col-2 text-center p-1">
-          <div className="card">
-            <div className="img_box">
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${store.titleDetail.poster_path}`}
-                className="card-img-top"
-                alt="..."
-              />
-            </div>
-            <button className="favorite-btn" onClick={actions.addFavorites}>
-              🖤
-            </button>
-            <span className="rating">{store.titleDetail.vote_average}</span>
-            <div className="card-body">
-              <h5 className="card-title">{store.titleDetail.title}</h5>
-            </div>
-          </div>
+    <div className="cuerpo">
+      <div className="row">
+        <div className="col-4">
+          <img
+            src={`https://image.tmdb.org/t/p/w500/${store.titleDetail.poster_path}`}
+            alt="Poster Image"
+            className="poster"
+          />
         </div>
-        ;
+        <div className="col-6 m-5 text-light">
+          <h4>{store.titleDetail.title}</h4>
+          <h6 className="fst-italic">{store.titleDetail.tagline}</h6>
+          <p className="fw-lighter">
+            <strong>Release Date: </strong> {store.titleDetail.release_date}
+          </p>
+          <div className="d-flex mb-1">
+            {store.titleDetail?.genres?.map((genre) => (
+              <span className="m-1 border border-2 rounded p-1" key={genre}>
+                {genre.name}
+              </span>
+            ))}
+          </div>
+          <p className="fw-lighter">
+            <strong>Duration: </strong>
+            {store.titleDetail.runtime} min.
+          </p>
+          <p className="fw-lighter">
+            <strong>Overview: </strong> {store.titleDetail.overview} min.
+          </p>
+        </div>
       </div>
     </div>
   );
