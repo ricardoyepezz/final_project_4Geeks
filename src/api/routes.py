@@ -18,7 +18,10 @@ from flask.helpers import send_from_directory
 from flask_cors import CORS, cross_origin
 
 
-api = Blueprint('api', __name__)
+api = Blueprint('api', __name__, static_folder='movie-recommender-app/build',
+            static_url_path='/')
+
+CORS(api)
 
 @api.route("/token", methods=["POST"])
 def create_token():

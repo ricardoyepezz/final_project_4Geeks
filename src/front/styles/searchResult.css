@@ -58,9 +58,9 @@
   cursor: pointer;
   font-weight: 400;
   padding: 4px 9px;
-  background: #3a86ff;
+  background: #bc13fe;
   font-weight: 400;
-  border-color: #3a86ff !important;
+  border-color: #bc13fe !important;
   transition: width 0.2s, height 0.2s;
 }
 .overveiwContent {
@@ -86,6 +86,7 @@
 
 .MainBackGround {
   background-size: contain;
+  padding-top: 140px;
 }
 .close-bttn {
   z-index: 100;
@@ -94,12 +95,11 @@
   color: #fff !important;
   border-radius: 0.4em;
   cursor: pointer;
-
   font-weight: 400;
   padding: 4px 9px;
-  background: #3a86ff;
+  background: #bc13fe;
   font-weight: 400;
-  border-color: #3a86ff !important;
+  border-color: #bc13fe !important;
   transition: width 0.2s, height 0.2s;
 }
 .close-bttn:hover {

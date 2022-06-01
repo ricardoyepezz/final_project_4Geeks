@@ -53,7 +53,7 @@ export const Form = () => {
       formData.append("email", registerForm.email);
       formData.append("password", registerForm.password);
       actions.signup(formData, navigate);
-      NaviuseNavigaterget.reset();
+      //useNavigate.reset();
       flag = true;
     } else return false;
   };

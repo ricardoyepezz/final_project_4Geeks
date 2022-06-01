@@ -3,6 +3,7 @@
     url("../img/wallpaperUser.jpg");
   width: 100%;
   height: 100%;
+  padding-top: 140px;
   background-size: cover;
   position: relative;
   padding-bottom: 0;

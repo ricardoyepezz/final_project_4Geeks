@@ -64,13 +64,13 @@ export const SearchResult = () => {
 
         setSearchedMovie(realMovieData);
         fetch(
-          `https://api.themoviedb.org/3/movie/${realMovieData.id}/credits?${apiKey}&language=es-ES`
+          `https://api.themoviedb.org/3/movie/${realMovieData.id}/credits?${apiKey}`
         ).then((Response) =>
           Response.json().then((data) => gotCast(data.cast))
         );
 
         fetch(
-          `https://api.themoviedb.org/3/movie/${realMovieData.id}?${apiKey}&append_to_response=videos&language=es-ES`
+          `https://api.themoviedb.org/3/movie/${realMovieData.id}?${apiKey}&append_to_response=videos`
         ).then((Response) => Response.json().then((data) => gotVideo(data)));
       };
       // getting data for the searched movie from tmdb
@@ -192,9 +192,7 @@ export const SearchResult = () => {
               <div>
                 <b>Rating{" : "}</b>
                 {searchedMovie.vote_average}
-                {"/10 "}
-
-                <i className="fa-solid fa-star"></i>
+                {"/10 "}⭐
               </div>
               <div>
                 <b> Fecha </b>
@@ -210,7 +208,6 @@ export const SearchResult = () => {
                   className="trailer-bttn "
                   onClick={() => setPlayTrailer(true)}
                 >
-                  <i className="fa-solid fa-play"></i>
                   {" Ver Trailer"}
                 </button>
               </div>
