@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Form = () => {
@@ -14,7 +14,7 @@ export const Form = () => {
   });
 
   console.log(registerForm);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [registerErrors, setRegisterErrors] = useState({});
 
@@ -52,8 +52,8 @@ export const Form = () => {
       formData.append("name", registerForm.name);
       formData.append("email", registerForm.email);
       formData.append("password", registerForm.password);
-      actions.signup(formData, history);
-      e.target.reset();
+      actions.signup(formData, navigate);
+      NaviuseNavigaterget.reset();
       flag = true;
     } else return false;
   };

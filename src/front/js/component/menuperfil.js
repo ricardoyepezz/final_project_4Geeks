@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../../styles/home.css";
 
 export const Menuperfil = () => {
   const { store, actions } = useContext(Context);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -28,7 +28,7 @@ export const Menuperfil = () => {
             Mis favoritos
           </a>
           <div className="dropdown-divider"></div>
-          <a className="dropdown-item" onClick={() => actions.logout(history)}>
+          <a className="dropdown-item" onClick={() => actions.logout(navigate)}>
             Logout
           </a>
         </div>

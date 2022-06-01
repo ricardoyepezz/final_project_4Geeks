@@ -1,24 +1,14 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/home";
-import { Form } from "./component/form";
 import { Login } from "./component/login";
-import { Single } from "./pages/single";
+import { Form } from "./component/form";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
-import { Animacion } from "./pages/animacion";
-import { Comedia } from "./pages/comedia";
-import { Drama } from "./pages/drama";
-import { Romance } from "./pages/romance";
-import { Terror } from "./pages/terror";
 import { Perfil } from "./pages/perfil";
-import { Favoritos } from "./pages/favoritos";
-import { Lista } from "./pages/lista";
-import { Results } from "./component/Results";
-import { Editar } from "./pages/editardatos";
-import { Configuracion } from "./pages/configuracion";
 import { Detail } from "./pages/Detail";
+import { User } from "./pages/User";
+import { NotFound } from "./pages/NotFound";
 
 //create your first component
 const Layout = () => {
@@ -29,65 +19,16 @@ const Layout = () => {
   return (
     <div>
       <BrowserRouter basename={basename}>
-        <ScrollToTop>
-          <Navbar />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/signup">
-              <Form />
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/results">
-              <Results />
-            </Route>
-            <Route exact path="/detail/:id">
-              <Detail />
-            </Route>
-            <Route exact path="/animacion">
-              <Animacion />
-            </Route>
-            <Route exact path="/comedia">
-              <Comedia />
-            </Route>
-            <Route exact path="/drama">
-              <Drama />
-            </Route>
-            <Route exact path="/romance">
-              <Romance />
-            </Route>
-            <Route exact path="/terror">
-              <Terror />
-            </Route>
-            <Route exact path="/perfil">
-              <Perfil />
-            </Route>
-            <Route exact path="/perfil/:menu">
-              <Perfil />
-            </Route>
-            <Route exact path="/favoritos/">
-              <Favoritos />
-            </Route>
-            <Route exact path="/milista/">
-              <Lista />
-            </Route>
-            <Route exact path="/configuracion/">
-              <Configuracion />
-            </Route>
-            <Route exact path="/editar/">
-              <Editar />
-            </Route>
-            <Route exact path="/single/:theid">
-              <Single />
-            </Route>
-            <Route>
-              <h1>Not found!</h1>
-            </Route>
-          </Switch>
-        </ScrollToTop>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Form />} />
+          <Route path="detail/:id" element={<Detail />} />
+          <Route path="perfil" element={<Perfil />} />
+          <Route path="user" element={<User />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );

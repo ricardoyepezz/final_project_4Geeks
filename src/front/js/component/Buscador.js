@@ -1,9 +1,9 @@
 import React from "react";
 import Swal from "sweetalert2";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Buscador = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ export const Buscador = () => {
       });
     } else {
       e.currentTarget.keyword.value = "";
-      history.push(`/results?keyword=${keyword}`);
+      navigate.push(`/results?keyword=${keyword}`);
     }
   };
   return (

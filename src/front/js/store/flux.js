@@ -18,16 +18,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 
     /////////////////////////////////////// Function for user logout
     actions: {
-      logout: (history) => {
+      logout: () => {
         localStorage.clear();
-        history.push("/");
         console.log("Login out successful");
         setStore({ token: null });
       },
 
       /////////////////////////////////////// function to register new users
 
-      signup: (formData, history) => {
+      signup: (formData) => {
         fetch(process.env.BACKEND_URL + "/api/signup", {
           method: "POST",
           body: formData,
@@ -37,16 +36,13 @@ const getState = ({ getStore, getActions, setStore }) => {
             console.log("Data From Flux", data);
             localStorage.setItem("token", JSON.stringify(data));
             setStore({ register: data });
-            history.push("/");
           })
           .catch((error) => console.log("HA OCURRIDO UN ERROR", error));
       },
 
       /////////////////////////////////////// Function for user login
 
-      login: (formData, history) => {
-        let token = localStorage.getItem("token");
-
+      login: (formData) => {
         fetch(process.env.BACKEND_URL + "/api/token", {
           method: "POST",
           body: formData,
@@ -55,10 +51,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => {
             setStore({ token: data });
             localStorage.setItem("token", JSON.stringify(data));
-
-            {
-              token ? history.push("/perfil") : history.push("/login");
-            }
           })
           .catch((error) => console.log("Login Error", error));
       },

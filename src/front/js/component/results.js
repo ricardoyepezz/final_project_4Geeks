@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/home.css";
-import Swal from "sweetalert2";
+//import Swal from "sweetalert2";
 
 export const Results = () => {
   let query = new URLSearchParams(window.location.search);
