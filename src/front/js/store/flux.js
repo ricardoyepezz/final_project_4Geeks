@@ -2,8 +2,8 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       token: null,
-      message: null,
-      url: "https://3001-ricardoyepe-finalprojec-tz9m7u5f1xd.ws-us46.gitpod.io",
+      //message: null,
+      //url: "https://3001-ricardoyepe-finalprojec-tz9m7u5f1xd.ws-us46.gitpod.io",
       titles: {},
       titleDetail: {},
       animationTitles: {},
@@ -19,18 +19,16 @@ const getState = ({ getStore, getActions, setStore }) => {
     /////////////////////////////////////// Function for user logout
     actions: {
       logout: (history) => {
-        localStorage.removeItem("token");
+        localStorage.clear();
         history.push("/");
         console.log("Login out successful");
         setStore({ token: null });
-        setStore({ message: null });
       },
 
       /////////////////////////////////////// function to register new users
 
       signup: (formData, history) => {
-        const { url } = getStore();
-        fetch(`${url}/api/signup`, {
+        fetch(process.env.BACKEND_URL + "/api/signup", {
           method: "POST",
           body: formData,
         })
@@ -47,10 +45,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       /////////////////////////////////////// Function for user login
 
       login: (formData, history) => {
-        const { url } = getStore();
         let token = localStorage.getItem("token");
 
-        fetch(`${url}/api/token`, {
+        fetch(process.env.BACKEND_URL + "/api/token", {
           method: "POST",
           body: formData,
         })
@@ -58,6 +55,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => {
             setStore({ token: data });
             localStorage.setItem("token", JSON.stringify(data));
+
             {
               token ? history.push("/perfil") : history.push("/login");
             }

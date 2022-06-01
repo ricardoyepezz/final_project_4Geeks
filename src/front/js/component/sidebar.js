@@ -3,11 +3,8 @@ import "../../styles/home.css";
 import { Redirect } from "react-router-dom";
 
 export const Sidebar = () => {
-  let token = localStorage.getItem("token");
-
   return (
     <>
-      {!token && <Redirect to="/" />}
       <div className="sidebar container-fluid">
         <div className=" flex-nowrap">
           <div className=" col-auto px-sm-2 px-0">

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "../../styles/home.css";
 
 export const Menuperfil = () => {

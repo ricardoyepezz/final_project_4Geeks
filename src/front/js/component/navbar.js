@@ -47,6 +47,7 @@ export const Navbar = () => {
                   Terror
                 </a>
               </li>
+
               {token ? (
                 <li className="nav-item">
                   <Favoritos />
@@ -56,7 +57,9 @@ export const Navbar = () => {
               )}
             </ul>
             <Buscador />
-            {!token ? (
+            {token ? (
+              ""
+            ) : (
               <div className="p-2 bd-highlight">
                 <a
                   className="nav-link text-white d-flex justify-content-end"
@@ -66,17 +69,15 @@ export const Navbar = () => {
                   Sign-Up
                 </a>
               </div>
-            ) : (
-              ""
             )}
-            {!token ? (
+            {token ? (
+              <Menuperfil />
+            ) : (
               <div className="p-2 bd-highlight">
                 <a className="nav-link text-white" type="button" href="/login">
                   Log In
                 </a>
               </div>
-            ) : (
-              <Menuperfil />
             )}
           </div>
         </div>
