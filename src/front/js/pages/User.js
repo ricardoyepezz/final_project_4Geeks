@@ -2,9 +2,10 @@ import React from "react";
 import { useEffect, useState } from "react";
 import SearchBar from "../component/SearchBar";
 import MovieCard from "../component/MovieCard";
+import "../../styles/user.css";
 
 export const User = () => {
-  const apiKey = "api_key=b97316ed479ee4226afefc88d1792909";
+  const apiKey = "api_key=c7e441d69782b0348dfb84193c8a5371";
   const [list, setList] = useState([]);
   const [homeGenreList, setHomeGenreList] = useState([{}]);
   const [selectedGenres, setSelectedGenres] = useState([]);
@@ -69,10 +70,10 @@ export const User = () => {
       <div className="HomePage">
         <div className="HomeSearch">
           {/*Rendering the searchbar */}
-          <SearchBar movies={list} placeholder="Search for a Movie" />
+          <SearchBar movies={list} placeholder="Busca una película" />
         </div>
 
-        <h2 className="genreHeader">Get Top Movies Based On Genre </h2>
+        <h2 className="genreHeader">Top de Películas por Género</h2>
         <div className="buttonGrid">
           {homeGenreList.map((genre) => (
             <div

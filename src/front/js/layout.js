@@ -9,6 +9,7 @@ import { Perfil } from "./pages/perfil";
 import { Detail } from "./pages/Detail";
 import { User } from "./pages/User";
 import { NotFound } from "./pages/NotFound";
+import { SearchResult } from "./pages/SearchResult";
 
 //create your first component
 const Layout = () => {
@@ -27,6 +28,7 @@ const Layout = () => {
           <Route path="detail/:id" element={<Detail />} />
           <Route path="perfil" element={<Perfil />} />
           <Route path="user" element={<User />} />
+          <Route path="/search/:id" element={<SearchResult />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

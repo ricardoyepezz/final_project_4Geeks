@@ -2,8 +2,6 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       token: null,
-      //message: null,
-      //url: "https://3001-ricardoyepe-finalprojec-tz9m7u5f1xd.ws-us46.gitpod.io",
       titles: {},
       titleDetail: {},
       animationTitles: {},

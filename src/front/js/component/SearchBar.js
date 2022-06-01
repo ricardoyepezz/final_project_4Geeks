@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-//import "./styles/SearchBarStyles.css";
+import "../../styles/searchBar.css";
 
 function SearchBar({ movies, placeholder }) {
   const navigate = useNavigate();
@@ -64,8 +64,9 @@ function SearchBar({ movies, placeholder }) {
         </div>
       </div>
       {notFound ? (
-        <div className="NotFound">
-          Sorry! The Movie You Searched for is not present in our data base
+        <div className="NotFound m-1">
+          Disculpa! La película que buscaste no se encuentra en nuestra base de
+          datos
         </div>
       ) : null}
       {filteredMovies.length > 0 ? (
