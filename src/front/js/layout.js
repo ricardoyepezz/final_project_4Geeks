@@ -28,7 +28,7 @@ const Layout = () => {
           <Route path="detail/:id" element={<Detail />} />
           <Route path="perfil" element={<Perfil />} />
           <Route path="user" element={<User />} />
-          <Route path="/search/:id" element={<SearchResult />} />
+          <Route exact path="/search/:id" element={<SearchResult />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
