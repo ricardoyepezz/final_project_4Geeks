@@ -101,6 +101,7 @@ export const SearchResult = () => {
         return null;
       }
     });
+
   const RenderTrailer = () => {
     return (
       <div>

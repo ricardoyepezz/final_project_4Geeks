@@ -10,6 +10,11 @@ import { Detail } from "./pages/Detail";
 import { User } from "./pages/User";
 import { NotFound } from "./pages/NotFound";
 import { SearchResult } from "./pages/SearchResult";
+import { Animacion } from "./pages/animacion";
+import { Comedia } from "./pages/comedia";
+import { Drama } from "./pages/drama";
+import { Romance } from "./pages/romance";
+import { Terror } from "./pages/terror";
 
 //create your first component
 const Layout = () => {
@@ -28,7 +33,12 @@ const Layout = () => {
           <Route path="detail/:id" element={<Detail />} />
           <Route path="perfil" element={<Perfil />} />
           <Route path="user" element={<User />} />
-          <Route exact path="/search/:id" element={<SearchResult />} />
+          <Route exact path="search/:id" element={<SearchResult />} />
+          <Route path="animacion" element={<Animacion />} />
+          <Route path="comedia" element={<Comedia />} />
+          <Route path="drama" element={<Drama />} />
+          <Route path="romance" element={<Romance />} />
+          <Route path="terror" element={<Terror />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
