@@ -1,8 +1,6 @@
 import React from "react";
 import { Menuperfil } from "../component/menuperfil";
 import Movlogo from "../../img/Movlogo.png";
-import { Favoritos } from "../pages/favoritos";
-import { Buscador } from "../component/Buscador";
 
 export const Navbar = () => {
   let token = localStorage.getItem("token");
@@ -30,6 +28,9 @@ export const Navbar = () => {
                 <a className="nav-link text-light" href="/animacion">
                   Animación
                 </a>
+                {/* <Link className="nav-link text-light" to="animacion">
+                  Animación
+                </Link> */}
               </li>
               <li className="nav-item">
                 <a className="nav-link text-light" href="/comedia">
@@ -51,14 +52,6 @@ export const Navbar = () => {
                   Terror
                 </a>
               </li>
-              {/* Validar si hay token para mostrar botón Favs */}
-              {token ? (
-                <li className="nav-item">
-                  <Favoritos />
-                </li>
-              ) : (
-                ""
-              )}
             </ul>
             {/* Validar si hay token para mostrar botón Sign-Up */}
 
@@ -66,7 +59,6 @@ export const Navbar = () => {
               ""
             ) : (
               <div className="p-2 bd-highlight">
-                <Buscador className="nav-link d-flex justify-content-end" />
                 <a
                   className="nav-link text-white d-flex justify-content-end"
                   type="button"

@@ -1,3 +1,5 @@
+import { useHistory } from "react-router-dom";
+
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
@@ -12,19 +14,21 @@ const getState = ({ getStore, getActions, setStore }) => {
       searchResults: {},
       poster_path: {},
       favorites: [],
+      users: {},
     },
 
     /////////////////////////////////////// Function for user logout
     actions: {
-      logout: () => {
+      logout: (history) => {
         localStorage.clear();
         console.log("Login out successful");
         setStore({ token: null });
+        history.push("/");
       },
 
       /////////////////////////////////////// function to register new users
 
-      signup: (formData) => {
+      signup: (formData, history) => {
         fetch(process.env.BACKEND_URL + "/api/signup", {
           method: "POST",
           body: formData,
@@ -32,15 +36,16 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((response) => response.json())
           .then((data) => {
             console.log("Data From Flux", data);
-            localStorage.setItem("token", JSON.stringify(data));
-            setStore({ register: data });
+            /* localStorage.setItem("token", JSON.stringify(data));
+            setStore({ register: data }); */
+            history.push("/");
           })
           .catch((error) => console.log("HA OCURRIDO UN ERROR", error));
       },
 
       /////////////////////////////////////// Function for user login
 
-      login: (formData) => {
+      login: (formData, history) => {
         fetch(process.env.BACKEND_URL + "/api/token", {
           method: "POST",
           body: formData,
@@ -49,6 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => {
             setStore({ token: data });
             localStorage.setItem("token", JSON.stringify(data));
+            history.push("/user");
           })
           .catch((error) => console.log("Login Error", error));
       },
@@ -78,6 +84,18 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch((err) => console.error(err));
       },
+
+      /////////////////////////////////////// Function get titles detail
+
+      getUser: (id) => {
+        fetch(process.env.BACKEND_URL + `/api/user${id}`)
+          .then((response) => response.text())
+          .then((result) => {
+            setStore({ users: result });
+          })
+          .catch((error) => console.log("error", error));
+      },
+
       /////////////////////////////////////// Function get animation titles
 
       getAnimationTitles: () => {

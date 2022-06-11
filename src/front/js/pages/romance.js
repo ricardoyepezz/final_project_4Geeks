@@ -17,34 +17,41 @@ export const Romance = () => {
       <div className="cuerpo row">
         {store.romanceTitles?.results?.slice(0, 18).map((oneMovie, index) => {
           return (
-            <div key={index} className="col-2 text-center p-1">
-              <div className="card">
-                <div className="img_box">
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500/${oneMovie.poster_path}`}
-                    className="card-img-top"
-                    alt="..."
-                  />
-                </div>
-                {token ? (
-                  <button
-                    className="favorite-btn"
-                    onClick={actions.addFavorites(oneMovie.title)}
-                  >
-                    🖤
-                  </button>
-                ) : (
-                  ""
-                )}
-                <Link to={"detail/" + oneMovie.id}>
-                  <button className="detail-btn">✖️</button>
-                </Link>
+            <div
+              key={index}
+              className="col-4 col-md-3 col-lg-2 text-center p-1"
+            >
+              <Link className="card_link" to={"detail/" + oneMovie.id}>
+                <div className="card">
+                  <span className="open_link">
+                    <div className="link_mas">+</div>
+                  </span>
+                  <div className="img_box">
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500/${oneMovie.poster_path}`}
+                      className="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                  {token ? (
+                    <button
+                      className="favorite-btn"
+                      onClick={() => {
+                        actions.addFavorites(oneMovie.title);
+                      }}
+                    >
+                      🖤
+                    </button>
+                  ) : (
+                    ""
+                  )}
 
-                <span className="rating">{oneMovie.vote_average}</span>
-                <div className="card-body">
-                  <h5 className="card-title">{oneMovie.title}</h5>
+                  <span className="rating">{oneMovie.vote_average}</span>
+                  <div className="card-body">
+                    <h5 className="card-title">{oneMovie.title}</h5>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           );
         })}

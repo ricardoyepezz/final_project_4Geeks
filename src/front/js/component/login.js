@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Login = () => {
   const { actions } = useContext(Context);
 
-  const navigate = useNavigate();
+  const history = useHistory();
   let flag = false;
   const [loginform, setLoginForm] = useState({
     email: "",
@@ -44,7 +44,7 @@ export const Login = () => {
       let formData = new FormData();
       formData.append("email", loginform.email);
       formData.append("password", loginform.password);
-      actions.login(formData, navigate);
+      actions.login(formData, history);
       e.target.reset();
       return (flag = true);
     } else return false;

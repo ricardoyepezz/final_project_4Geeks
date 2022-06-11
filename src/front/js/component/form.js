@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
+import Swal from "sweetalert2";
 
 export const Form = () => {
   const { actions } = useContext(Context);
@@ -14,7 +15,7 @@ export const Form = () => {
   });
 
   console.log(registerForm);
-  const navigate = useNavigate();
+  const history = useHistory();
 
   const [registerErrors, setRegisterErrors] = useState({});
 
@@ -52,8 +53,13 @@ export const Form = () => {
       formData.append("name", registerForm.name);
       formData.append("email", registerForm.email);
       formData.append("password", registerForm.password);
-      actions.signup(formData, navigate);
-      //useNavigate.reset();
+      actions.signup(formData, history);
+      Swal.fire({
+        icon: "success",
+        title: "Bien!...",
+        text: "Te has registrado exitosamente!",
+      });
+      //useHistory.reset();
       flag = true;
     } else return false;
   };

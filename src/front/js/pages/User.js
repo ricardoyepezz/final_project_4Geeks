@@ -1,8 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import SearchBar from "../component/SearchBar";
+import Buscador from "../component/Buscador";
 import MovieCard from "../component/MovieCard";
 import "../../styles/user.css";
+import { Redirect } from "react-router-dom";
 
 export const User = () => {
   const apiKey = "api_key=c7e441d69782b0348dfb84193c8a5371";
@@ -10,6 +11,7 @@ export const User = () => {
   const [homeGenreList, setHomeGenreList] = useState([{}]);
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [currMovies, setCurrMovies] = useState([{}]);
+  let token = localStorage.getItem("token");
 
   useEffect(() => {
     setCurrMovies([]);
@@ -66,37 +68,42 @@ export const User = () => {
     });
 
   return (
-    <div className="container-fluid">
-      <div className="HomePage">
-        <div className="HomeSearch">
-          {/*Rendering the searchbar */}
-          <SearchBar movies={list} placeholder="Busca una película" />
-        </div>
+    <>
+      {!token && <Redirect to="/" />}
+      <div className="container-fluid">
+        <div className="HomePage">
+          <div className="HomeSearch">
+            {/*Rendering the searchbar */}
+            <Buscador placeholder="Busca una película" />
+          </div>
 
-        <h2 className="genreHeader">Top de Películas por Género</h2>
-        <div className="buttonGrid">
-          {homeGenreList.map((genre) => (
-            <div
-              key={genre.id}
-              onClick={() => onTagClick(genre.id)}
-              className={
-                selectedGenres.includes(genre.id) ? "genreTagON" : "genreTagOFF"
-              }
-            >
-              {genre.name}
-              {selectedGenres.includes(genre.id) ? (
-                <i className="fa fa-times" aria-hidden="true"></i>
-              ) : null}
-            </div>
-          ))}
+          <h2 className="genreHeader">Top de Películas por Género</h2>
+          <div className="buttonGrid">
+            {homeGenreList.map((genre) => (
+              <div
+                key={genre.id}
+                onClick={() => onTagClick(genre.id)}
+                className={
+                  selectedGenres.includes(genre.id)
+                    ? "genreTagON"
+                    : "genreTagOFF"
+                }
+              >
+                {genre.name}
+                {selectedGenres.includes(genre.id) ? (
+                  <i className="fa fa-times" aria-hidden="true"></i>
+                ) : null}
+              </div>
+            ))}
+          </div>
+        </div>
+        {/*Rendering selected genre movies */}
+        <div className="container-fluid HomeMovies">
+          <div className="container HomeMovieGrid">
+            {currMovies.length > 0 ? renderMovies() : null}
+          </div>
         </div>
       </div>
-      {/*Rendering selected genre movies */}
-      <div className="container-fluid HomeMovies">
-        <div className="container HomeMovieGrid">
-          {currMovies.length > 0 ? renderMovies() : null}
-        </div>
-      </div>
-    </div>
+    </>
   );
 };

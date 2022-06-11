@@ -1,9 +1,10 @@
 import React from "react";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import "../../styles/searchBar.css";
+import { useHistory } from "react-router-dom";
 
-export const Buscador = () => {
-  const navigate = useNavigate();
+function Buscador() {
+  const history = useHistory();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -23,20 +24,26 @@ export const Buscador = () => {
       });
     } else {
       e.currentTarget.keyword.value = "";
-      navigate.push(`/results?keyword=${keyword}`);
+      history.push(`/results?keyword=${keyword}`);
     }
   };
   return (
-    <form className="d-flex" onSubmit={submitHandler}>
-      <input
-        className="form-control me-2"
-        type="text"
-        placeholder="Search"
-        name="keyword"
-      />
-      <button className="btn btn-outline-warning" type="submit">
-        🔎
-      </button>
-    </form>
+    <div className="SearchBody">
+      <div className="CompleteBar">
+        <form className="BAR" onSubmit={submitHandler}>
+          <input
+            className="searchingbar"
+            type="text"
+            placeholder="Busca una película"
+            name="keyword"
+          />
+          <button className="search-button" type="submit">
+            <i className="fas fa-search"></i>
+          </button>
+        </form>
+      </div>
+    </div>
   );
-};
+}
+
+export default Buscador;

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "../../styles/searchBar.css";
 
 function SearchBar({ movies, placeholder }) {
-  const navigate = useNavigate();
+  const history = useHistory();
   const [inputValue, setInputValue] = useState("");
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [notFound, setNotFound] = useState(false);
@@ -36,7 +36,7 @@ function SearchBar({ movies, placeholder }) {
       }
     }
     if (flag) {
-      navigate(`/search/${inputValue}`);
+      history(`/search/${inputValue}`);
     } else {
       setNotFound(true);
     }
@@ -74,7 +74,7 @@ function SearchBar({ movies, placeholder }) {
           {filteredMovies.slice(0, 10).map((movie) => (
             <div
               className="searchItem"
-              onClick={() => navigate(`/search/${movie}`)}
+              onClick={() => history(`/search/${movie}`)}
             >
               {movie}
             </div>

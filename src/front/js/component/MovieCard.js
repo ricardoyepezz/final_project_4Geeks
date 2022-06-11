@@ -1,14 +1,14 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "../../styles/movieCard.css";
 
 const MovieCard = ({ movie }) => {
-  const navigate = useNavigate();
+  const history = useHistory();
 
   const currentMovie = movie.title;
   // opening the clicked movie
   const goToMovie = () => {
-    navigate(`/search/${currentMovie}`);
+    history.push(`/search/${currentMovie}`);
     window.location.reload();
   };
   const img_path = "https://image.tmdb.org/t/p/w342";
