@@ -52,6 +52,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         })
           .then((response) => response.json())
           .then((data) => {
+            console.log(data);
             setStore({ token: data });
             localStorage.setItem("token", JSON.stringify(data));
             history.push("/user");

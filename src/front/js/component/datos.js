@@ -4,12 +4,10 @@ import { useParams } from "react-router-dom";
 import "../../styles/home.css";
 
 export const Datos = () => {
-  const { store, actions } = useContext(Context);
-  const { id } = useParams;
-
-  useEffect(() => {
-    actions.getUser(id);
-  }, []);
+  let token = JSON.parse(localStorage.getItem("token"));
+  let name = token.user.name;
+  let email = token.user.email;
+  let id = token.user.id;
 
   return (
     <div className="col mb-3 py-3 text-warning bg-dark">
@@ -24,9 +22,9 @@ export const Datos = () => {
         </thead>
         <tbody>
           <tr>
-            <th scope="row">{store.users?.id}</th>
-            <td>{store.users?.name}</td>
-            <td>{store.users?.email}</td>
+            <th scope="row">{id}</th>
+            <td>{name}</td>
+            <td>{email}</td>
           </tr>
         </tbody>
       </table>

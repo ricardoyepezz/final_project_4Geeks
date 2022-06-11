@@ -1,6 +1,7 @@
 import React from "react";
 import { Menuperfil } from "../component/menuperfil";
 import Movlogo from "../../img/Movlogo.png";
+import { Banner } from "../component/Banner";
 
 export const Navbar = () => {
   let token = localStorage.getItem("token");
@@ -23,14 +24,12 @@ export const Navbar = () => {
                 </li>
               ) : (
                 ""
-              )}{" "}
+              )}
+
               <li className="nav-item">
                 <a className="nav-link text-light" href="/animacion">
                   Animación
                 </a>
-                {/* <Link className="nav-link text-light" to="animacion">
-                  Animación
-                </Link> */}
               </li>
               <li className="nav-item">
                 <a className="nav-link text-light" href="/comedia">
@@ -69,7 +68,10 @@ export const Navbar = () => {
               </div>
             )}
             {token ? (
-              <Menuperfil />
+              <div className="d-flex flex-row bd-highlight me-4">
+                <Banner className="bd-highlight" />
+                <Menuperfil className="bd-highlight" />
+              </div>
             ) : (
               <div className="p-2 bd-highlight">
                 <a className="nav-link text-white" type="button" href="/login">

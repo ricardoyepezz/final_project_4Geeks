@@ -14,7 +14,6 @@ export const Form = () => {
     password: "",
   });
 
-  console.log(registerForm);
   const history = useHistory();
 
   const [registerErrors, setRegisterErrors] = useState({});
