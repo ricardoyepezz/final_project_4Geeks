@@ -76,6 +76,7 @@
 		"axios": "^0.27.2",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
+		"react-comments-section": "^2.0.10",
 		"react-dom": "^16.8.4",
 		"react-hook-form": "^7.30.0",
 		"react-player": "^2.10.1",

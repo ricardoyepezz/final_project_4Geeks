@@ -22,3 +22,17 @@ class User(db.Model):
     def save(self):
         db.session.add(self)
         db.session.commit()
+
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    comment = db.Column(db.String(120), unique = False, nullable = False)
+    movie_id = db.Column(db.Integer, unique = False, nullable = False)
+    user_id = db.Column(db.Integer, unique = False, nullable = False)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "comment": self.comment,
+            "movie_id": self.movie_id,
+            "user_id": self.user_id
+        }

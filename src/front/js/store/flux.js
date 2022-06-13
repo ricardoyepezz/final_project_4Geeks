@@ -1,5 +1,3 @@
-import { useHistory } from "react-router-dom";
-
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
@@ -15,6 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       poster_path: {},
       favorites: [],
       users: {},
+      comments: {},
     },
 
     /////////////////////////////////////// Function for user logout
@@ -29,33 +28,63 @@ const getState = ({ getStore, getActions, setStore }) => {
       /////////////////////////////////////// function to register new users
 
       signup: (formData, history) => {
-        fetch(process.env.BACKEND_URL + "/api/signup", {
-          method: "POST",
-          body: formData,
-        })
+        fetch(
+          "https://3001-ricardoyepe-finalprojec-yitmki5v8qz.ws-us47.gitpod.io/api/signup",
+          {
+            method: "POST",
+            body: formData,
+          }
+        )
           .then((response) => response.json())
           .then((data) => {
             console.log("Data From Flux", data);
-            /* localStorage.setItem("token", JSON.stringify(data));
-            setStore({ register: data }); */
+            //localStorage.setItem("token", JSON.stringify(data));
+            //setStore({ register: data });
             history.push("/");
+            window.location.reload();
           })
-          .catch((error) => console.log("HA OCURRIDO UN ERROR", error));
+          .catch((error) =>
+            console.log("Ha ocurrido un error en el registro", error)
+          );
+      },
+
+      /////////////////////////////////////// function to post new comments
+
+      commentPost: (formData) => {
+        fetch(
+          "https://3001-ricardoyepe-finalprojec-yitmki5v8qz.ws-us47.gitpod.io/api/comment",
+          {
+            method: "POST",
+            body: formData,
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("new comment", data);
+            window.location.reload();
+          })
+          .catch((error) =>
+            console.log("Ha ocurrido un error en el registro", error)
+          );
       },
 
       /////////////////////////////////////// Function for user login
 
       login: (formData, history) => {
-        fetch(process.env.BACKEND_URL + "/api/token", {
-          method: "POST",
-          body: formData,
-        })
+        fetch(
+          /* process.env.BACKEND_URL +  */ "https://3001-ricardoyepe-finalprojec-yitmki5v8qz.ws-us47.gitpod.io/api/token",
+          {
+            method: "POST",
+            body: formData,
+          }
+        )
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
             setStore({ token: data });
             localStorage.setItem("token", JSON.stringify(data));
             history.push("/user");
+            window.location.reload();
           })
           .catch((error) => console.log("Login Error", error));
       },
@@ -77,7 +106,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       getTitleDetail: (id) => {
         fetch(
-          `https://api.themoviedb.org/3/movie/${id}?api_key=c7e441d69782b0348dfb84193c8a5371&language=en-US`
+          `https://api.themoviedb.org/3/movie/${id}?api_key=c7e441d69782b0348dfb84193c8a5371&language=es-ES`
         )
           .then((res) => res.json())
           .then((data) => {
@@ -86,13 +115,26 @@ const getState = ({ getStore, getActions, setStore }) => {
           .catch((err) => console.error(err));
       },
 
-      /////////////////////////////////////// Function get titles detail
+      /////////////////////////////////////// Function get users
 
       getUser: (id) => {
         fetch(process.env.BACKEND_URL + `/api/user${id}`)
           .then((response) => response.text())
           .then((result) => {
             setStore({ users: result });
+          })
+          .catch((error) => console.log("error", error));
+      },
+
+      /////////////////////////////////////// Function get comments
+
+      getComments: () => {
+        fetch(
+          "https://3001-ricardoyepe-finalprojec-yitmki5v8qz.ws-us47.gitpod.io/api/comments"
+        )
+          .then((response) => response.json())
+          .then((result) => {
+            setStore({ comments: result });
           })
           .catch((error) => console.log("error", error));
       },

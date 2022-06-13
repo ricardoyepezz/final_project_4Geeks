@@ -3,7 +3,7 @@ import re
 import pandas as pd
 from flask_cors import CORS
 from flask import Flask, request, jsonify, url_for, render_template, Blueprint
-from api.models import db, User
+from api.models import db, User, Comment
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
@@ -126,3 +126,29 @@ def signup():
     }
 
     if user: return jsonify(data), 201
+
+@api.route('/comment', methods=['POST'])
+def comment():
+    newComment = Comment()
+    body = request.get_json()
+    movie_id = body["movie_id"]
+    comment = body["comment"]
+    user_id = body["user_id"]
+
+    newComment.movie_id = movie_id
+    newComment.comment = comment
+    newComment.user_id = user_id
+
+    db.session.add(newComment)
+    db.session.commit()
+    return jsonify("Comment OK")
+    
+@api.route('/comments/', methods=['GET'])
+def getComments():
+    all_comments = Comment.query.all()
+    arr_comments = list(map(lambda x:x.serialize(), all_comments))
+    return jsonify({"comments": arr_comments})
+    
+
+
+    

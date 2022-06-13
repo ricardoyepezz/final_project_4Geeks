@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import "../../styles/searchResult.css";
 import MovieCard from "../component/MovieCard";
 import ReactPlayer from "react-player";
+import { CommentBox } from "../component/CommentBox";
 
 export const SearchResult = () => {
   const params = useParams();
@@ -230,8 +231,9 @@ export const SearchResult = () => {
         </button>
       </div>
 
-      <div className="container-fluid recommendedMovies">
-        <h2 className=" container RecommendHeading">Películas Recomendadas</h2>
+      <div className="m-5">
+        <h2 className="container RecommendHeading">Comentarios</h2>
+        <CommentBox movieID={searchedMovie.id} />
         {/*Rendering the recommended movie cards */}
         <div className="container recommendedGrid">{RenderMovies()}</div>
       </div>
