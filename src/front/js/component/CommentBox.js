@@ -1,70 +1,126 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Context } from "../store/appContext";
-import "../../styles/comments.css";
+import React, { useState, useEffect } from "react";
+import "../../styles/CommentBox.scss";
+import Comment from "./Comment";
+import AddComment from "./AddComment";
 
-export const CommentBox = (movieID) => {
-  let token = JSON.parse(localStorage.getItem("token"));
-  let user = token.user.id;
-  //YA OBTENGO MOVIE ID Y USER ID, FALTA PONERLOS EN EL OBJETO
-  console.log("movieID", movieID);
-  console.log("user_ID", user);
-  const { store, actions } = useContext(Context);
+export const CommentBox = () => {
+  const [comments, updateComments] = useState([]);
+  const [deleteModalState, setDeleteModalState] = useState(false);
 
-  const [registerForm, setRegisterForm] = useState({
-    comment: "",
-  });
-
-  const handleChange = (e) => {
-    const { comment, value } = e.target;
-    const newState = { ...registerForm };
-    newState[comment] = value;
-    setRegisterForm(newState);
+  const getData = async () => {
+    const res = await fetch("./data/data.json");
+    const data = await res.json();
+    updateComments(data.comments);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let formData = new FormData();
-    formData.append("user", user);
-    formData.append("comment", registerForm.comment);
-    formData.append("id_movie", movieID);
-    actions.commentPost(formData);
-  };
   useEffect(() => {
-    actions.getComments();
+    localStorage.getItem("comments") !== null
+      ? updateComments(JSON.parse(localStorage.getItem("comments")))
+      : getData();
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("comments", JSON.stringify(comments));
+    deleteModalState
+      ? document.body.classList.add("overflow--hidden")
+      : document.body.classList.remove("overflow--hidden");
+  }, [comments, deleteModalState]);
+
+  // update score
+  let updateScore = (score, id, type) => {
+    let updatedComments = [...comments];
+
+    if (type === "comment") {
+      updatedComments.forEach((data) => {
+        if (data.id === id) {
+          data.score = score;
+        }
+      });
+    } else if (type === "reply") {
+      updatedComments.forEach((comment) => {
+        comment.replies.forEach((data) => {
+          if (data.id === id) {
+            data.score = score;
+          }
+        });
+      });
+    }
+    updateComments(updatedComments);
+  };
+
+  // add comments
+  let addComments = (newComment) => {
+    let updatedComments = [...comments, newComment];
+    updateComments(updatedComments);
+  };
+
+  // add replies
+  let updateReplies = (replies, id) => {
+    let updatedComments = [...comments];
+    updatedComments.forEach((data) => {
+      if (data.id === id) {
+        data.replies = [...replies];
+      }
+    });
+    updateComments(updatedComments);
+  };
+
+  // edit comment
+  let editComment = (content, id, type) => {
+    let updatedComments = [...comments];
+
+    if (type === "comment") {
+      updatedComments.forEach((data) => {
+        if (data.id === id) {
+          data.content = content;
+        }
+      });
+    } else if (type === "reply") {
+      updatedComments.forEach((comment) => {
+        comment.replies.forEach((data) => {
+          if (data.id === id) {
+            data.content = content;
+          }
+        });
+      });
+    }
+
+    updateComments(updatedComments);
+  };
+
+  // delete comment
+  let commentDelete = (id, type, parentComment) => {
+    let updatedComments = [...comments];
+    let updatedReplies = [];
+
+    if (type === "comment") {
+      updatedComments = updatedComments.filter((data) => data.id !== id);
+    } else if (type === "reply") {
+      comments.forEach((comment) => {
+        if (comment.id === parentComment) {
+          updatedReplies = comment.replies.filter((data) => data.id !== id);
+          comment.replies = updatedReplies;
+        }
+      });
+    }
+
+    updateComments(updatedComments);
+  };
+
   return (
-    <div className="text-center">
-      <div
-        className="input-group m-3 w-50 p-3"
-        onSubmit={(e) => handleSubmit(e)}
-      >
-        <input
-          type="text"
-          onChange={(e) => {
-            handleChange(e);
-          }}
-          className="form-control"
-          placeholder="Comentario"
+    <main className="App text-light">
+      {comments.map((comment) => (
+        <Comment
+          key={comment.id}
+          commentData={comment}
+          updateScore={updateScore}
+          updateReplies={updateReplies}
+          editComment={editComment}
+          commentDelete={commentDelete}
+          setDeleteModalState={setDeleteModalState}
         />
-        <button
-          className="btn btn-outline-secondary"
-          type="submit"
-          id="button-addon2"
-        >
-          Post!
-        </button>
-      </div>
-      <div className="text-light">
-        {store.comments?.comments?.map((oneComment, index) => {
-          return (
-            <div key={index} className="border-success mb-3">
-              <h5 className="card-title">{oneComment.user_id}</h5>
-              <p className="card-text">{oneComment.comment}</p>
-            </div>
-          );
-        })}
-      </div>
-    </div>
+      ))}
+      <AddComment buttonValue={"send"} addComments={addComments} />
+    </main>
   );
 };

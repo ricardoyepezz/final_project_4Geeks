@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../../styles/searchResult.css";
+import "../../styles/index.scss";
 import MovieCard from "../component/MovieCard";
 import ReactPlayer from "react-player";
 import { CommentBox } from "../component/CommentBox";
@@ -145,98 +146,100 @@ export const SearchResult = () => {
   const backdropPath = "https://image.tmdb.org/t/p/w1280";
 
   return (
-    <div
-      style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(${backdropPath}${searchedMovie.backdrop_path})`,
-      }}
-      className="MainBackGround"
-    >
-      <div className="container trailerContainer">
-        {
-          videoData && playTrailer
-            ? RenderTrailer()
-            : null /*Rendering the trailer*/
-        }
-        <div className="container .movie-details">
-          <div className="row ">
-            <div className="col-md-6 left-box col-md-push-6">
-              <h1 className="topTitle-Movie">{searchedMovie.title} </h1>
+    <>
+      <div
+        style={{
+          backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(${backdropPath}${searchedMovie.backdrop_path})`,
+        }}
+        className="MainBackGround"
+      >
+        <div className="container trailerContainer">
+          {
+            videoData && playTrailer
+              ? RenderTrailer()
+              : null /*Rendering the trailer*/
+          }
+          <div className="container .movie-details">
+            <div className="row ">
+              <div className="col-md-6 left-box col-md-push-6">
+                <h1 className="topTitle-Movie">{searchedMovie.title} </h1>
 
-              <p className="overviewContent">{searchedMovie.overview}</p>
-              <p>Cast: </p>
-              <div className="casting">
-                {castMembers.map((member) => {
-                  if (member) {
-                    return (
-                      <a
-                        href={` https://en.wikipedia.org/wiki/${member.name}`}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {" "}
-                        <img
-                          key={JSON.stringify(member.cast_id + member.id)}
-                          src={
-                            member.profile_path
-                              ? `${imgLink}${member.profile_path}`
-                              : ""
-                          }
-                          title={member.name}
-                          alt="mainPhoto"
-                        />
-                      </a>
-                    );
-                  }
-                  return null;
-                })}
-              </div>
+                <p className="overviewContent">{searchedMovie.overview}</p>
+                <p>Cast: </p>
+                <div className="casting">
+                  {castMembers.map((member) => {
+                    if (member) {
+                      return (
+                        <a
+                          href={` https://en.wikipedia.org/wiki/${member.name}`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {" "}
+                          <img
+                            key={JSON.stringify(member.cast_id + member.id)}
+                            src={
+                              member.profile_path
+                                ? `${imgLink}${member.profile_path}`
+                                : ""
+                            }
+                            title={member.name}
+                            alt="mainPhoto"
+                          />
+                        </a>
+                      );
+                    }
+                    return null;
+                  })}
+                </div>
 
-              <div>
-                <b>Rating{" : "}</b>
-                {searchedMovie.vote_average}
-                {"/10 "}⭐
+                <div>
+                  <b>Rating{" : "}</b>
+                  {searchedMovie.vote_average}
+                  {"/10 "}⭐
+                </div>
+                <div>
+                  <b> Fecha </b>
+                  {" : "} {searchedMovie.release_date}
+                </div>
+                <div>
+                  <b>Géneros</b>
+                  {" : "}
+                  {currGenre ? displayGenre() : null}
+                </div>
+                <div>
+                  <button
+                    className="trailer-bttn "
+                    onClick={() => setPlayTrailer(true)}
+                  >
+                    {" Ver Trailer"}
+                  </button>
+                </div>
               </div>
-              <div>
-                <b> Fecha </b>
-                {" : "} {searchedMovie.release_date}
+              <div className="col-md-6 col-md-pull-6 text-center">
+                <img
+                  className="main-img"
+                  src={`https://image.tmdb.org/t/p/w500${searchedMovie.poster_path}`}
+                  alt="Movie"
+                />
               </div>
-              <div>
-                <b>Géneros</b>
-                {" : "}
-                {currGenre ? displayGenre() : null}
-              </div>
-              <div>
-                <button
-                  className="trailer-bttn "
-                  onClick={() => setPlayTrailer(true)}
-                >
-                  {" Ver Trailer"}
-                </button>
-              </div>
-            </div>
-            <div className="col-md-6 col-md-pull-6 text-center">
-              <img
-                className="main-img"
-                src={`https://image.tmdb.org/t/p/w500${searchedMovie.poster_path}`}
-                alt="Movie"
-              />
             </div>
           </div>
         </div>
-      </div>
-      {/*Trailer Close Button */}
-      <div className={playTrailer ? "DisplayOn" : "DisplayOFF"}>
-        <button className="close-bttn" onClick={() => setPlayTrailer(false)}>
-          Cerrar Trailer
-        </button>
-      </div>
+        {/*Trailer Close Button */}
+        <div className={playTrailer ? "DisplayOn" : "DisplayOFF"}>
+          <button className="close-bttn" onClick={() => setPlayTrailer(false)}>
+            Cerrar Trailer
+          </button>
+        </div>
 
-      <div className="m-5">
-        <h2 className="container RecommendHeading">Comentarios</h2>
-        <CommentBox movieID={searchedMovie.id} />
-        {/*Rendering the recommended movie cards */}
-        <div className="container recommendedGrid">{RenderMovies()}</div>
+        <div className="m-5">
+          <h2 className="container RecommendHeading">Comentarios</h2>
+          {/*Rendering the recommended movie cards */}
+          <div className="container recommendedGrid">{RenderMovies()}</div>
+        </div>
       </div>
-    </div>
+      <CommentBox movieID={searchedMovie.id} />
+    </>
   );
 };

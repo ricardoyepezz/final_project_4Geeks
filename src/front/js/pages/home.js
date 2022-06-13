@@ -23,26 +23,35 @@ export const Home = () => {
           <p>
             Moviez te ayuda a seleccionar la próxima película perfecta para ver.
           </p>
-          <a
-            type="button"
-            className="btn btn-secondary btn-lg m-1"
-            href="/signup"
-          >
-            Registro
-          </a>
-          <a
-            type="button"
-            className="btn btn-secondary btn-lg m-1"
-            href="/login"
-          >
-            Entrar
-          </a>
+          {!token ? (
+            <>
+              <a
+                type="button"
+                className="btn btn-secondary btn-lg m-1"
+                href="/signup"
+              >
+                Registro
+              </a>
+              <a
+                type="button"
+                className="btn btn-secondary btn-lg m-1"
+                href="/login"
+              >
+                Entrar
+              </a>
+            </>
+          ) : (
+            ""
+          )}
         </div>
         <div className="cuerpo row m-1">
           <h1 className="text-light">Explora películas</h1>
           {store.titles?.results?.slice(0, 12).map((oneMovie, index) => {
             return (
-              <div key={index} className="col-2 text-center p-3">
+              <div
+                key={index}
+                className="col-4 col-md-3 col-lg-2 text-center p-3"
+              >
                 <Link className="card_link" to={"detail/" + oneMovie.id}>
                   <div className="card">
                     <span className="open_link">
