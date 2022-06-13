@@ -3,3 +3,16 @@
   height: 300px;
   margin-left: 100px;
 }
+
+.banner {
+  padding-top: 180px;
+  margin-left: 100px;
+  color: white;
+}
+
+.logo-home {
+  margin: 0 auto;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+}

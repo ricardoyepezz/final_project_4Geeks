@@ -28,13 +28,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       /////////////////////////////////////// function to register new users
 
       signup: (formData, history) => {
-        fetch(
-          "https://3001-ricardoyepe-finalprojec-yitmki5v8qz.ws-us47.gitpod.io/api/signup",
-          {
-            method: "POST",
-            body: formData,
-          }
-        )
+        fetch(process.env.BACKEND_URL + `/api/signup`, {
+          method: "POST",
+          body: formData,
+        })
           .then((response) => response.json())
           .then((data) => {
             console.log("Data From Flux", data);
@@ -71,13 +68,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       /////////////////////////////////////// Function for user login
 
       login: (formData, history) => {
-        fetch(
-          /* process.env.BACKEND_URL +  */ "https://3001-ricardoyepe-finalprojec-yitmki5v8qz.ws-us47.gitpod.io/api/token",
-          {
-            method: "POST",
-            body: formData,
-          }
-        )
+        fetch(process.env.BACKEND_URL + `/api/token`, {
+          method: "POST",
+          body: formData,
+        })
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
@@ -129,9 +123,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       /////////////////////////////////////// Function get comments
 
       getComments: () => {
-        fetch(
-          "https://3001-ricardoyepe-finalprojec-yitmki5v8qz.ws-us47.gitpod.io/api/comments"
-        )
+        fetch(process.env.BACKEND_URL + `/api/comments`)
           .then((response) => response.json())
           .then((result) => {
             setStore({ comments: result });

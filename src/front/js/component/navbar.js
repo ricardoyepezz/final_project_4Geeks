@@ -55,29 +55,12 @@ export const Navbar = () => {
             {/* Validar si hay token para mostrar botón Sign-Up */}
 
             {token ? (
-              ""
-            ) : (
-              <div className="p-2 bd-highlight">
-                <a
-                  className="nav-link text-white d-flex justify-content-end"
-                  type="button"
-                  href="/signup"
-                >
-                  Sign-Up
-                </a>
-              </div>
-            )}
-            {token ? (
               <div className="d-flex flex-row bd-highlight me-4">
                 <Banner className="bd-highlight" />
                 <Menuperfil className="bd-highlight" />
               </div>
             ) : (
-              <div className="p-2 bd-highlight">
-                <a className="nav-link text-white" type="button" href="/login">
-                  Log In
-                </a>
-              </div>
+              ""
             )}
           </div>
         </div>
