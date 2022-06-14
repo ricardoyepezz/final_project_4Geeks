@@ -1,6 +1,4 @@
-import React, { useEffect, useContext } from "react";
-import { Context } from "../store/appContext";
-import { useParams } from "react-router-dom";
+import React from "react";
 import "../../styles/home.css";
 
 export const Datos = () => {

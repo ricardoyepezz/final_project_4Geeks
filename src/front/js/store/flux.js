@@ -28,10 +28,14 @@ const getState = ({ getStore, getActions, setStore }) => {
       /////////////////////////////////////// function to register new users
 
       signup: (formData, history) => {
-        fetch(process.env.BACKEND_URL + `/api/signup`, {
-          method: "POST",
-          body: formData,
-        })
+        //fetch(process.env.BACKEND_URL + `/api/signup`, {
+        fetch(
+          "https://3001-ricardoyepe-finalprojec-gydaf7vi22c.ws-us47.gitpod.io/api/signup",
+          {
+            method: "POST",
+            body: formData,
+          }
+        )
           .then((response) => response.json())
           .then((data) => {
             console.log("Data From Flux", data);
@@ -68,10 +72,14 @@ const getState = ({ getStore, getActions, setStore }) => {
       /////////////////////////////////////// Function for user login
 
       login: (formData, history) => {
-        fetch(process.env.BACKEND_URL + `/api/token`, {
-          method: "POST",
-          body: formData,
-        })
+        //fetch(process.env.BACKEND_URL + `/api/token`, {
+        fetch(
+          "https://3001-ricardoyepe-finalprojec-gydaf7vi22c.ws-us47.gitpod.io/api/token",
+          {
+            method: "POST",
+            body: formData,
+          }
+        )
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
@@ -198,14 +206,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       /////////////////////////////////////// Function add favorites
 
-      addFavorites: (newFavorite) => {
+      addFavorites: (movieTitle, userId, movieId) => {
         const { favorites } = getStore();
-        const fav = favorites.some((item) => item === newFavorite);
-        //localStorage.setItem("movies", fav);
-        if (fav === true) {
-          return;
+        const datos = {
+          id: movieId,
+          user: userId,
+          movie_name: movieTitle,
+        };
+        var favoritos = localStorage.getItem("favoritos") || "[]";
+        favoritos = JSON.parse(favoritos);
+
+        // buscamos el producto en la lista de favoritos
+        var posLista = favoritos.find(function (e) {
+          return e.id == datos.id;
+        });
+        if (posLista > -1) {
+          // si está, lo quitamos
+          favoritos.slice(posLista, 1);
         } else {
-          setStore(favorites.push(newFavorite));
+          // si no está, lo añadimos */
+          favoritos.push(datos);
+
+          // guardamos la lista de favoritos
+          localStorage.setItem("favoritos", JSON.stringify(favoritos));
+          setStore({ favorites: favoritos });
         }
       },
 

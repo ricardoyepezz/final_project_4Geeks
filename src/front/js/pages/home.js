@@ -64,18 +64,6 @@ export const Home = () => {
                         alt="..."
                       />
                     </div>
-                    {token ? (
-                      <button
-                        className="favorite-btn"
-                        onClick={() => {
-                          actions.addFavorites(oneMovie.title);
-                        }}
-                      >
-                        🖤
-                      </button>
-                    ) : (
-                      ""
-                    )}
 
                     <span className="rating">{oneMovie.vote_average}</span>
                     <div className="card-body">

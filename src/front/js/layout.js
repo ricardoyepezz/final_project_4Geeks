@@ -17,6 +17,7 @@ import { Drama } from "./pages/drama";
 import { Romance } from "./pages/romance";
 import { Terror } from "./pages/terror";
 import { Results } from "./component/results";
+import { Favoritos } from "./pages/favoritos";
 
 //create your first component
 const Layout = () => {
@@ -65,6 +66,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/user">
               <User />
+            </Route>
+            <Route exact path="/favoritos">
+              <Favoritos />
             </Route>
             <Route path="/search/:id">
               <SearchResult />

@@ -6,6 +6,12 @@ import { useParams } from "react-router-dom";
 export const Detail = () => {
   const { store, actions } = useContext(Context);
   const { id } = useParams();
+  let token = localStorage.getItem("token");
+  let data = JSON.parse(localStorage.getItem("token"));
+  let userId = data.user.id;
+  let movieTitle = store.titleDetail.title;
+  let movieId = store.titleDetail.id;
+  console.log(movieId);
 
   useEffect(() => {
     actions.getTitleDetail(id);
@@ -38,8 +44,20 @@ export const Detail = () => {
             {store.titleDetail.runtime} min.
           </p>
           <p className="fw-lighter">
-            <strong>Overview: </strong> {store.titleDetail.overview} min.
+            <strong>Overview: </strong> {store.titleDetail.overview}
           </p>
+          {token ? (
+            <button
+              className="btn btn-dark"
+              onClick={() => {
+                actions.addFavorites(movieTitle, userId, movieId);
+              }}
+            >
+              🤍
+            </button>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>

@@ -7,13 +7,16 @@ const AddComment = ({ buttonValue, addComments, replyingTo }) => {
 
   const clickHandler = () => {
     if (comment === "" || comment === " ") return;
+    let data = JSON.parse(localStorage.getItem("token"));
+    let userId = data.user.id;
+    let username = data.user.name;
 
     const newComment = {
-      id: Math.floor(Math.random() * 100) + 5,
+      id: userId,
       content: replyingToUser + comment,
       createdAt: new Date(),
       score: 0,
-      username: "juliusomo",
+      username: username,
       currentUser: true,
       replies: [],
     };
