@@ -29,9 +29,9 @@ const CommentBtn = ({
   };
 
   return (
-    <div className="comment--btn">
+    <div className="comment--btn ">
       <button
-        className={`reply-btn ${
+        className={`reply-btn btn_base_stle ${
           !commentData.currentUser ? "" : "display--none"
         }`}
         onClick={showAddComment}
@@ -39,7 +39,7 @@ const CommentBtn = ({
         Reply
       </button>
       <button
-        className={`delete-btn ${
+        className={`delete-btn  btn_base_stle ${
           commentData.currentUser ? "" : "display--none"
         }`}
         onClick={showDeleteModal}
@@ -47,7 +47,7 @@ const CommentBtn = ({
         Delete
       </button>
       <button
-        className={`edit-btn ${commentData.currentUser ? "" : "display--none"}`}
+        className={`edit-btn btn_base_stle ${commentData.currentUser ? "" : "display--none"}`}
         onClick={showEditComment}
       >
         Edit

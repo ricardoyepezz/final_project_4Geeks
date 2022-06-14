@@ -27,7 +27,7 @@ const AddComment = ({ buttonValue, addComments, replyingTo }) => {
       <div className="profile-pic"></div>
       <textarea
         className="comment-input"
-        placeholder="Add a comment"
+        placeholder="Enter your comment here"
         value={replyingToUser + comment}
         onChange={(e) => {
           setComment(
@@ -37,7 +37,7 @@ const AddComment = ({ buttonValue, addComments, replyingTo }) => {
       />
       <div className="send-btn-container">
         <div className="profile-pic"></div>
-        <button className="add-btn" onClick={clickHandler}>
+        <button className="add-btn btn_base_stle" onClick={clickHandler}>
           {buttonValue}
         </button>
       </div>

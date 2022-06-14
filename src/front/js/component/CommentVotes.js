@@ -28,12 +28,12 @@ const CommentVotes = ({
   };
 
   return (
-    <div className="comment--votes">
-      <button className="plus-btn" onClick={upVote} aria-label="plus-btn">
+    <div className="comment--votes ">
+      <button className="plus-btn votes_btn" onClick={upVote} aria-label="plus-btn">
         +
       </button>
       <div className="votes-counter">{commentData.score}</div>
-      <button className="minus-btn" onClick={downVote} aria-label="minus-btn">
+      <button className="minus-btn votes_btn" onClick={downVote} aria-label="minus-btn">
         -
       </button>
     </div>

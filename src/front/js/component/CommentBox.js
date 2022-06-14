@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/CommentBox.scss";
-import Comment from "./Comment";
 import AddComment from "./AddComment";
+import Comment from "./Comment";
 
 export const CommentBox = () => {
   const [comments, updateComments] = useState([]);
@@ -120,7 +120,7 @@ export const CommentBox = () => {
           setDeleteModalState={setDeleteModalState}
         />
       ))}
-      <AddComment buttonValue={"send"} addComments={addComments} />
+      <AddComment buttonValue={"Comment"} addComments={addComments} />
     </main>
   );
 };
