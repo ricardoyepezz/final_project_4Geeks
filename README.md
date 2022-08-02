@@ -1,4 +1,4 @@
-# WebApp boilerplate with React JS and Flask API
+# Website for content recommendation using React JS and Flask API.
 
 ### Back-End Manual Installation:
 
@@ -20,16 +20,7 @@ It is recomended to install the backend first, make sure you have Python 3.8, Pi
 
 ### Front-End Manual Installation:
 
--   Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
+- Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
 
 1. Install the packages: `$ npm install`
 2. Start coding! start the webpack dev server `$ npm run start`
-
-## Publish your website!
-
-This boilerplate it's 100% integrated with Herkou, just by pushing your changes to the heroku repository it will deploy: `$ git push heroku main`
-
-    	// "prettier-webpack-plugin": "^1.2.0",
-
-"dotenv-webpack": "^1.7.0",
-"friendly-errors-webpack-plugin": "^1.7.0",
